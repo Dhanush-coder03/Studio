@@ -1,0 +1,94 @@
+/* ==========================================================================
+   LENSIFY - LUXURY WEDDING PHOTOGRAPHY STUDIO
+   Global Design Tokens & Base Styles
+   ========================================================================== */
+
+:root {
+  /* Exact Colors specified by user */
+  --color-bg: #FBF8F1;
+  --color-ivory: #FBF8F1;
+  --color-ivory-light: #FFFFFF;
+  --color-ivory-dark: #F3EBDD;
+  --color-beige: #EFE7D9;
+  --color-beige-soft: #F5EFE3;
+  --color-beige-border: #E8DECD;
+
+  --color-charcoal: #161616;
+  --color-charcoal-muted: #555555;
+  --color-muted: #66625B;
+
+  /* Accent Colors */
+  --color-gold: #B9822E;
+  --color-gold-light: #D4A14A;
+  --color-gold-gradient: linear-gradient(135deg, #B9822E 0%, #D8A048 50%, #A27023 100%);
+
+  /* Primary Pink/Red CTA */
+  --color-primary-pink: #E91E4D;
+  --color-primary-pink-hover: #D81543;
+  --pink-gradient: linear-gradient(135deg, #EF2958 0%, #D81543 100%);
+  --pink-shadow: 0 8px 24px -2px rgba(233, 30, 77, 0.38);
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 0.2s var(--ease-out);
+  --transition-normal: 0.35s var(--ease-out);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-beige);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}

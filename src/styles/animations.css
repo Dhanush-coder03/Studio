@@ -1,0 +1,205 @@
+/* ==========================================================================
+   LENSIFY - LUXURY ANIMATIONS
+   Sophisticated micro-interactions and cinematic reveals
+   ========================================================================== */
+
+/* Fade in & Slide up base */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Line reveal effect */
+@keyframes lineReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) rotateX(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* Gold shimmer glow */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Subtle continuous floating for camera lens */
+@keyframes lensFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Slow emotional zoom on couple image */
+@keyframes coupleSlowZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Glass reflection glint moving slowly across lens */
+@keyframes glassReflectionMove {
+  0% {
+    transform: translate(-30%, -30%) rotate(25deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(25%, 25%) rotate(28deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-30%, -30%) rotate(25deg);
+    opacity: 0.35;
+  }
+}
+
+/* Aperture blade micro-shimmer */
+@keyframes aperturePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(223, 32, 72, 0.4);
+  }
+  70% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 12px rgba(223, 32, 72, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(223, 32, 72, 0);
+  }
+}
+
+/* Floating photo slices entrance animation */
+@keyframes sliceEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translate(var(--offset-x, 0), var(--offset-y, 0));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+/* Subtle pulse for heart icon */
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.22);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  45% {
+    transform: scale(1.18);
+  }
+}
+
+/* Hand-drawn underline SVG stroke animation */
+@keyframes strokeDraw {
+  0% {
+    stroke-dashoffset: 150;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Subtle gentle scroll bounce */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+/* Applied Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s var(--ease-out) forwards;
+}
+
+.animate-eyebrow {
+  opacity: 0;
+  animation: fadeInUp 0.7s 0.15s var(--ease-out) forwards;
+}
+
+.animate-title-line-1 {
+  opacity: 0;
+  animation: lineReveal 0.85s 0.25s var(--ease-out) forwards;
+}
+
+.animate-title-line-2 {
+  opacity: 0;
+  animation: lineReveal 0.85s 0.4s var(--ease-out) forwards;
+}
+
+.animate-subtitle {
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.55s var(--ease-out) forwards;
+}
+
+.animate-buttons {
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.7s var(--ease-out) forwards;
+}
+
+.animate-lens-entry {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeIn 1s 0.3s var(--ease-out) forwards;
+}
+
+.animate-lens-float {
+  animation: lensFloat 8s ease-in-out infinite;
+}
+
+.animate-couple-zoom {
+  animation: coupleSlowZoom 16s ease-in-out infinite;
+}
+
+.animate-heart {
+  display: inline-block;
+  animation: heartBeat 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-pulse-ring {
+  animation: aperturePulse 2.8s infinite;
+}

@@ -1,0 +1,215 @@
+/* ==========================================================================
+   LENSIFY - CAMERA LENS & PHOTO COLLAGE STYLING
+   ========================================================================== */
+
+.lens-composition-container {
+  flex: 0 0 55%;
+  max-width: 55%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  perspective: 1200px;
+  z-index: 10;
+}
+
+.lens-perspective-card {
+  position: relative;
+  width: 580px;
+  height: 580px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* Surrounding Curved Photo Wedges */
+.lens-fan-wings {
+  position: absolute;
+  width: 610px;
+  height: 610px;
+  pointer-events: auto;
+  z-index: 2;
+  transition: transform 0.2s ease-out;
+}
+
+/* Main Realistic Camera Lens */
+.main-camera-lens-body {
+  position: relative;
+  width: 375px;
+  height: 375px;
+  border-radius: 50%;
+  z-index: 6;
+  box-shadow: 
+    0 35px 70px -10px rgba(22, 22, 22, 0.36),
+    0 15px 30px -5px rgba(185, 130, 46, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-out);
+}
+
+/* Outer knurled metal barrel */
+.lens-knurled-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 35% 30%, #444341 0%, #1c1c1c 45%, #0f0f0f 85%),
+    repeating-radial-gradient(circle, #222 0, #222 2px, #181818 3px, #181818 4px);
+  padding: 10px;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.8),
+    0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Signature Red Metallic Ring (Canon L series style) */
+.lens-signature-red-ring {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 2.5px solid var(--color-primary-pink);
+  box-shadow: 
+    0 0 6px rgba(233, 30, 77, 0.6),
+    inset 0 0 4px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Inner optical barrel with engraved lens markings */
+.lens-matte-bezel {
+  position: absolute;
+  inset: 17px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #2a2a2a 0%, #151515 70%, #0d0d0d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 3px 6px rgba(255, 255, 255, 0.15),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* SVG Curving Text Markings */
+.lens-barrel-svg-text {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Central Photographic Aperture Window */
+.lens-central-glass-aperture {
+  position: absolute;
+  inset: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 25px rgba(0, 0, 0, 0.85),
+    0 0 0 2px #0a0a0a;
+  z-index: 5;
+  background: #000;
+}
+
+.lens-couple-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: contrast(1.05) saturate(1.08) brightness(1.02);
+  transition: transform 0.6s var(--ease-out);
+}
+
+/* Optical glass reflection overlays */
+.lens-glass-reflection-coating {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 6;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.38) 0%, 
+    rgba(255, 255, 255, 0.12) 28%, 
+    rgba(147, 197, 253, 0.08) 45%, 
+    rgba(244, 114, 182, 0.05) 55%, 
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+}
+
+.lens-specular-arc {
+  position: absolute;
+  top: 6%;
+  left: 12%;
+  width: 76%;
+  height: 38%;
+  border-radius: 50%;
+  border-top: 3px solid rgba(255, 255, 255, 0.45);
+  filter: blur(1.5px);
+  pointer-events: none;
+  z-index: 7;
+}
+
+/* Responsive Lens Dimensions */
+@media (max-width: 1199px) {
+  .lens-perspective-card {
+    width: 480px;
+    height: 480px;
+  }
+  .main-camera-lens-body {
+    width: 325px;
+    height: 325px;
+  }
+  .lens-central-glass-aperture {
+    inset: 38px;
+  }
+  .lens-fan-wings {
+    width: 520px;
+    height: 520px;
+  }
+}
+
+@media (max-width: 991px) {
+  .lens-composition-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-height: 440px;
+    margin-bottom: 20px;
+  }
+  .lens-perspective-card {
+    width: 430px;
+    height: 430px;
+  }
+  .main-camera-lens-body {
+    width: 290px;
+    height: 290px;
+  }
+  .lens-fan-wings {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 575px) {
+  .lens-perspective-card {
+    width: 330px;
+    height: 330px;
+  }
+  .main-camera-lens-body {
+    width: 220px;
+    height: 220px;
+  }
+  .lens-central-glass-aperture {
+    inset: 26px;
+  }
+  .lens-fan-wings {
+    width: 345px;
+    height: 345px;
+  }
+}

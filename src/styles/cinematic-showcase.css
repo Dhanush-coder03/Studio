@@ -1,0 +1,332 @@
+/* ==========================================================================
+   LENSIFY - BIG CINEMATIC IMAGE SHOWCASE & PORTFOLIO CATEGORIES (Template 2)
+   ========================================================================== */
+
+.cinematic-section-wrapper {
+  position: relative;
+  background-color: var(--color-bg);
+  padding: 60px 0 100px;
+  overflow: hidden;
+}
+
+/* Section Header (Inspired by Template 2 Top Bar) */
+.cinematic-section-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.cinematic-header-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.cinematic-header-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 600;
+  color: var(--color-charcoal);
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+
+.cinematic-header-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-charcoal-muted);
+}
+
+.cinematic-header-flourish {
+  width: 120px;
+  height: 12px;
+  margin-top: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   BIG CINEMATIC IMAGE HERO BANNER (Image 2 Concept)
+   -------------------------------------------------------------------------- */
+.cinematic-banner-card {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 60px -15px rgba(22, 22, 22, 0.28),
+    0 10px 25px -5px rgba(185, 130, 46, 0.15);
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.cinematic-banner-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  filter: contrast(1.05) brightness(0.96);
+  transform: scale(1.02);
+  transition: transform 10s ease;
+}
+
+.cinematic-banner-card:hover .cinematic-banner-bg {
+  transform: scale(1.05);
+}
+
+/* Cinematic Gradient Overlay: Dark vignette on left to make script text pop */
+.cinematic-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    95deg,
+    rgba(14, 13, 12, 0.8) 0%,
+    rgba(14, 13, 12, 0.58) 32%,
+    rgba(14, 13, 12, 0.22) 65%,
+    rgba(14, 13, 12, 0.35) 100%
+  );
+  z-index: 2;
+}
+
+/* Banner Content on Left */
+.cinematic-banner-content {
+  position: relative;
+  z-index: 5;
+  padding: 60px 75px;
+  max-width: 600px;
+  color: #FFFFFF;
+}
+
+.cinematic-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Romantic Script Display Headline ("Love Captured Forever") */
+.cinematic-headline-script {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(3.8rem, 6.2vw, 5.8rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.cinematic-headline-script span {
+  display: block;
+}
+
+.cinematic-headline-script .word-forever {
+  color: #F8E5BF;
+  text-shadow: 0 0 25px rgba(248, 229, 191, 0.4);
+}
+
+/* Decorative Divider Filigree matching reference */
+.cinematic-divider-svg {
+  width: 150px;
+  height: 16px;
+  margin-bottom: 22px;
+  opacity: 0.9;
+}
+
+.cinematic-sub-metadata {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Gallery Pill Button */
+.btn-cinematic-gallery {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFFFFF;
+  color: #161616 !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 14px 34px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  transition: all var(--transition-normal);
+}
+
+.btn-cinematic-gallery:hover {
+  background: #FDFBF7;
+  color: var(--color-primary-pink) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+.btn-cinematic-gallery .gallery-arrow-icon {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.btn-cinematic-gallery:hover .gallery-arrow-icon {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   5 PORTFOLIO CATEGORY CARDS (Exact Template 2 Bottom Row)
+   -------------------------------------------------------------------------- */
+.portfolio-categories-container {
+  position: relative;
+  z-index: 5;
+}
+
+.categories-grid-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.category-showcase-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-beige-border);
+  border-radius: 20px;
+  padding: 12px 12px 22px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(22, 22, 22, 0.04);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-showcase-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--color-gold-light);
+  box-shadow: 0 16px 32px rgba(22, 22, 22, 0.1), 0 4px 12px rgba(185, 130, 46, 0.12);
+}
+
+/* Image Thumbnail Container */
+.category-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #000;
+}
+
+.category-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out), filter 0.4s ease;
+}
+
+.category-showcase-card:hover .category-card-img {
+  transform: scale(1.08);
+  filter: brightness(1.04);
+}
+
+/* Card Typography */
+.category-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: 5px;
+  letter-spacing: -0.01em;
+}
+
+.category-card-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Bottom Red Accent Pill Line matching reference */
+.category-accent-line {
+  width: 36px;
+  height: 2px;
+  background-color: var(--color-primary-pink);
+  border-radius: 2px;
+  transition: width var(--transition-normal);
+}
+
+.category-showcase-card:hover .category-accent-line {
+  width: 54px;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1199px) {
+  .cinematic-banner-content {
+    padding: 50px;
+  }
+  .categories-grid-row {
+    gap: 16px;
+  }
+  .category-card-title {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .cinematic-banner-card {
+    min-height: 520px;
+  }
+  .cinematic-banner-content {
+    padding: 40px;
+    max-width: 100%;
+  }
+  .categories-grid-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cinematic-section-wrapper {
+    padding: 40px 0 60px;
+  }
+  .cinematic-banner-card {
+    min-height: 470px;
+    border-radius: 18px;
+  }
+  .cinematic-banner-content {
+    padding: 30px 22px;
+  }
+  .cinematic-headline-script {
+    font-size: 3.2rem;
+  }
+  .categories-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .category-showcase-card:last-child {
+    grid-column: span 2;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+}
