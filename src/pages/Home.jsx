@@ -4,6 +4,10 @@ import Hero from '../components/Hero';
 import BigCinematicShowcase from '../components/BigCinematicShowcase';
 import ReelModal from '../components/ReelModal';
 import BookModal from '../components/BookModal';
+import AboutUs from '../components/AboutUs';
+import GalleryReel from '../components/GalleryReel';
+import Packages from '../components/Packages';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const [reelModalOpen, setReelModalOpen] = useState(false);
@@ -26,7 +30,19 @@ export default function Home() {
         <BigCinematicShowcase
           onBookClick={() => setBookModalOpen(true)}
         />
+
+        {/* About Us / Our Approach Section */}
+        <AboutUs />
+
+        {/* Cinematic Film Reel Gallery */}
+        <GalleryReel />
+
+        {/* Pricing Packages */}
+        <Packages onBookClick={() => setBookModalOpen(true)} />
       </main>
+
+      {/* Global Footer */}
+      <Footer />
 
       {/* Interactive Cinematic Showreel Modal */}
       <ReelModal

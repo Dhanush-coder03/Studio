@@ -116,7 +116,7 @@ export default function LensComposition({ mouseOffset }) {
             viewBox="0 0 600 600"
             className="w-100 h-100"
             style={{
-              overflow: 'visible',
+              overflow: 'visible',marginTop: '20px',marginLeft:'10px',
               filter: 'drop-shadow(0 18px 36px rgba(22, 22, 22, 0.16))',
             }}
           >
@@ -198,7 +198,7 @@ export default function LensComposition({ mouseOffset }) {
         <div
           className={`main-camera-lens-body animate-lens-float ${isLensHovered ? 'hovered' : ''}`}
           style={{
-            transform: `translate(${lensMoveX}px, ${lensMoveY}px) scale(${isLensHovered ? 1.02 : 1})`,
+            transform: `translate(${lensMoveX}px, ${lensMoveY}px) scale(${isLensHovered ? 1.02 : 1})`,marginTop: '20px',marginLeft:'15px'
           }}
           onMouseEnter={() => setIsLensHovered(true)}
           onMouseLeave={() => setIsLensHovered(false)}

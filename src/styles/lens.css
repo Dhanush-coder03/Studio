@@ -12,6 +12,7 @@
   min-height: 520px;
   perspective: 1200px;
   z-index: 10;
+  margin-top: 10px;
 }
 
 .lens-perspective-card {

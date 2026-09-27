@@ -1,0 +1,130 @@
+/* ==========================================================================
+   ABOUT US SECTION STYLING
+   ========================================================================== */
+
+.about-section {
+  padding: 120px 0;
+  background-color: var(--color-beige); /* matching the theme's background */
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-image-wrapper {
+  flex: 1 1 45%;
+  position: relative;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  height: 600px;
+}
+
+.about-content {
+  flex: 1 1 45%;
+}
+
+.about-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+.about-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  color: var(--color-charcoal);
+  margin-bottom: 30px;
+  line-height: 1.1;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.stat-item {
+  border-left: 2px solid var(--color-gold);
+  padding-left: 20px;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--color-charcoal);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.btn-about {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background-color: var(--color-charcoal);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-about:hover {
+  background-color: var(--color-primary-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(219, 39, 119, 0.2);
+}
+
+@media (max-width: 991px) {
+  .about-container {
+    flex-direction: column;
+  }
+  
+  .about-image-wrapper, .about-content {
+    flex: 1 1 100%;
+  }
+
+  .about-image {
+    height: 400px;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+}
