@@ -8,7 +8,7 @@ import './styles/hero.css';
 import './styles/cinematic-showcase.css';
 import './styles/about-us.css';
 import './styles/gallery-reel.css';
-import './styles/packages.css';
+import './styles/camera-details.css';
 import './styles/footer.css';
 import Home from './pages/Home';
 

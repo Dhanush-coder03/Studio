@@ -68,7 +68,7 @@ export default function Navbar({ onBookClick }) {
                 <circle cx="50" cy="50" r="6" fill="#DF2048" />
               </svg>
             </div>
-            <span className="brand-wordmark">Lensify</span>
+            <span className="brand-wordmark">Velu Photography</span>
           </a>
 
           {/* Desktop Navigation Links */}

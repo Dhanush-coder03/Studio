@@ -1,0 +1,127 @@
+.camera-details-section {
+  padding: 8rem 0;
+  background-color: var(--color-white, #fff);
+  color: var(--color-dark, #333);
+  position: relative;
+  z-index: 10;
+}
+
+.camera-details-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.camera-eyebrow {
+  display: block;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-accent, #c6a87c); /* Fallback gold color */
+  margin-bottom: 1rem;
+}
+
+.camera-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-family: var(--font-heading, serif);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.camera-subtitle {
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.camera-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .camera-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.camera-card {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.camera-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.camera-image-container {
+  height: 350px;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.camera-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.camera-card:hover .camera-image {
+  transform: scale(1.05);
+}
+
+.camera-info {
+  padding: 2.5rem 2rem;
+  flex-grow: 1;
+}
+
+.camera-info h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--color-black, #000);
+}
+
+.camera-info p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
+}
+
+.camera-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.camera-features li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 0.95rem;
+}
+
+.camera-features li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--color-accent, #c6a87c);
+  font-size: 0.8rem;
+}

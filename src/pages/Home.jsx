@@ -6,7 +6,7 @@ import ReelModal from '../components/ReelModal';
 import BookModal from '../components/BookModal';
 import AboutUs from '../components/AboutUs';
 import GalleryReel from '../components/GalleryReel';
-import Packages from '../components/Packages';
+import CameraDetails from '../components/CameraDetails';
 import Footer from '../components/Footer';
 
 export default function Home() {
@@ -37,8 +37,8 @@ export default function Home() {
         {/* Cinematic Film Reel Gallery */}
         <GalleryReel />
 
-        {/* Pricing Packages */}
-        <Packages onBookClick={() => setBookModalOpen(true)} />
+        {/* Camera Details Section */}
+        <CameraDetails />
       </main>
 
       {/* Global Footer */}
