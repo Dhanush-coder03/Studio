@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import api from '../services/api';
 
 // Import local photography images
 import bigMountainImg from '../assets/images/big-mountain-hero.jpg';
@@ -572,6 +573,66 @@ export function StudioProvider({ children }) {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  // Backend connection status: 'checking' | 'connected' | 'offline' | 'db-pending'
+  const [backendStatus, setBackendStatus] = useState('checking');
+
+  // Fetch initial data from MongoDB API on mount
+  useEffect(() => {
+    let isMounted = true;
+
+    async function initializeFromBackend() {
+      try {
+        const health = await api.checkHealth();
+        if (!isMounted) return;
+
+        if (health && health.status === 'ok') {
+          const isDbConnected = health.database && health.database.includes('connected');
+          setBackendStatus(isDbConnected ? 'connected' : 'db-pending');
+
+          // Fetch fresh collections from MongoDB
+          const [imgsRes, srvsRes, galsRes, pkgsRes, contactRes, inqsRes] = await Promise.allSettled([
+            api.getImages(),
+            api.getServices(),
+            api.getGallery(),
+            api.getPackages(),
+            api.getContactInfo(),
+            api.getInquiries(),
+          ]);
+
+          if (!isMounted) return;
+
+          if (imgsRes.status === 'fulfilled' && imgsRes.value?.data?.length > 0) {
+            setImages(imgsRes.value.data);
+          }
+          if (srvsRes.status === 'fulfilled' && srvsRes.value?.data?.length > 0) {
+            setServices(srvsRes.value.data);
+          }
+          if (galsRes.status === 'fulfilled' && galsRes.value?.data?.length > 0) {
+            setGallery(galsRes.value.data);
+          }
+          if (pkgsRes.status === 'fulfilled' && pkgsRes.value?.data?.length > 0) {
+            setPackages(pkgsRes.value.data);
+          }
+          if (contactRes.status === 'fulfilled' && contactRes.value?.data) {
+            setContactInfo(contactRes.value.data);
+          }
+          if (inqsRes.status === 'fulfilled' && inqsRes.value?.data?.length > 0) {
+            setInquiries(inqsRes.value.data);
+          }
+        } else {
+          setBackendStatus('offline');
+        }
+      } catch (err) {
+        if (isMounted) {
+          setBackendStatus('offline');
+        }
+      }
+    }
+
+    initializeFromBackend();
+    return () => { isMounted = false; };
+  }, []);
+
   // Save to localStorage when state changes
   useEffect(() => {
     try {
@@ -634,28 +695,46 @@ export function StudioProvider({ children }) {
   // ==========================================
   // Image Actions
   // ==========================================
-  const addImage = (imageData) => {
+  const addImage = async (imageData) => {
+    const tempId = `img-${Date.now()}`;
     const newImg = {
-      id: `img-${Date.now()}`,
+      id: tempId,
       createdAt: new Date().toISOString().split('T')[0],
       ...imageData,
     };
     setImages((prev) => [newImg, ...prev]);
     showToast(`Added image "${newImg.title || 'Photo'}" to media library`);
+
+    // Sync to MongoDB backend
+    try {
+      const res = await api.createImage(imageData);
+      if (res?.data?.id) {
+        setImages((prev) => prev.map((img) => (img.id === tempId ? { ...img, id: res.data.id } : img)));
+      }
+    } catch {
+      // Local copy is already saved
+    }
     return newImg;
   };
 
-  const deleteImage = (id) => {
+  const deleteImage = async (id) => {
     setImages((prev) => prev.filter((img) => img.id !== id));
     showToast('Image removed from library', 'info');
+
+    try {
+      await api.deleteImage(id);
+    } catch {
+      // Handled locally
+    }
   };
 
   // ==========================================
   // Service Actions
   // ==========================================
-  const addService = (serviceData) => {
+  const addService = async (serviceData) => {
+    const tempId = `srv-${Date.now()}`;
     const newService = {
-      id: `srv-${Date.now()}`,
+      id: tempId,
       slug: (serviceData.title || 'service').toLowerCase().replace(/\s+/g, '-'),
       createdAt: new Date().toISOString().split('T')[0],
       isFeatured: false,
@@ -664,105 +743,223 @@ export function StudioProvider({ children }) {
     };
     setServices((prev) => [newService, ...prev]);
     showToast(`Service "${newService.title}" created successfully!`);
+
+    try {
+      const res = await api.createService(serviceData);
+      if (res?.data?.id) {
+        setServices((prev) => prev.map((srv) => (srv.id === tempId ? { ...srv, id: res.data.id } : srv)));
+      }
+    } catch {
+      // Fallback in local state
+    }
     return newService;
   };
 
-  const updateService = (id, updatedData) => {
+  const updateService = async (id, updatedData) => {
     setServices((prev) =>
       prev.map((srv) => (srv.id === id ? { ...srv, ...updatedData } : srv))
     );
     showToast('Service details updated successfully!');
+
+    try {
+      await api.updateService(id, updatedData);
+    } catch {
+      // Handled
+    }
   };
 
-  const deleteService = (id) => {
+  const deleteService = async (id) => {
     setServices((prev) => prev.filter((srv) => srv.id !== id));
     showToast('Service removed', 'info');
+
+    try {
+      await api.deleteService(id);
+    } catch {
+      // Handled
+    }
   };
 
   // ==========================================
   // Gallery Actions
   // ==========================================
-  const addGalleryItem = (galleryData) => {
+  const addGalleryItem = async (galleryData) => {
+    const tempId = `gal-${Date.now()}`;
     const newItem = {
-      id: `gal-${Date.now()}`,
+      id: tempId,
       year: new Date().getFullYear().toString(),
       isFeatured: true,
       ...galleryData,
     };
     setGallery((prev) => [newItem, ...prev]);
     showToast(`Added "${newItem.title}" to gallery showcase!`);
+
+    try {
+      const res = await api.createGalleryItem(galleryData);
+      if (res?.data?.id) {
+        setGallery((prev) => prev.map((g) => (g.id === tempId ? { ...g, id: res.data.id } : g)));
+      }
+    } catch {
+      // Handled
+    }
     return newItem;
   };
 
-  const updateGalleryItem = (id, updatedData) => {
+  const updateGalleryItem = async (id, updatedData) => {
     setGallery((prev) =>
       prev.map((item) => (item.id === id ? { ...item, ...updatedData } : item))
     );
     showToast('Gallery item updated');
+
+    try {
+      await api.updateGalleryItem(id, updatedData);
+    } catch {
+      // Handled
+    }
   };
 
-  const deleteGalleryItem = (id) => {
+  const deleteGalleryItem = async (id) => {
     setGallery((prev) => prev.filter((item) => item.id !== id));
     showToast('Gallery item deleted', 'info');
+
+    try {
+      await api.deleteGalleryItem(id);
+    } catch {
+      // Handled
+    }
   };
 
   // ==========================================
   // Package Actions
   // ==========================================
-  const addPackage = (packageData) => {
+  const addPackage = async (packageData) => {
+    const tempId = `pkg-${Date.now()}`;
     const newPkg = {
-      id: `pkg-${Date.now()}`,
+      id: tempId,
       isPopular: false,
       features: [],
       ...packageData,
     };
     setPackages((prev) => [...prev, newPkg]);
     showToast(`Package "${newPkg.name}" added to pricing menu!`);
+
+    try {
+      const res = await api.createPackage(packageData);
+      if (res?.data?.id) {
+        setPackages((prev) => prev.map((p) => (p.id === tempId ? { ...p, id: res.data.id } : p)));
+      }
+    } catch {
+      // Handled
+    }
     return newPkg;
   };
 
-  const updatePackage = (id, updatedData) => {
+  const updatePackage = async (id, updatedData) => {
     setPackages((prev) =>
       prev.map((pkg) => (pkg.id === id ? { ...pkg, ...updatedData } : pkg))
     );
     showToast('Package details updated!');
+
+    try {
+      await api.updatePackage(id, updatedData);
+    } catch {
+      // Handled
+    }
   };
 
-  const deletePackage = (id) => {
+  const deletePackage = async (id) => {
     setPackages((prev) => prev.filter((pkg) => pkg.id !== id));
     showToast('Package deleted', 'info');
+
+    try {
+      await api.deletePackage(id);
+    } catch {
+      // Handled
+    }
   };
 
   // ==========================================
   // Contact & Inquiries Actions
   // ==========================================
-  const updateContactInfo = (newInfo) => {
+  const updateContactInfo = async (newInfo) => {
     setContactInfo((prev) => ({ ...prev, ...newInfo }));
     showToast('Studio contact details saved successfully!');
+
+    try {
+      await api.updateContactInfo(newInfo);
+    } catch {
+      // Handled
+    }
   };
 
-  const addInquiry = (inquiryData) => {
+  const addInquiry = async (inquiryData) => {
+    const tempId = `inq-${Date.now()}`;
     const newInq = {
-      id: `inq-${Date.now()}`,
+      id: tempId,
       status: 'New',
       dateReceived: new Date().toLocaleString(),
       ...inquiryData,
     };
     setInquiries((prev) => [newInq, ...prev]);
     showToast('New client inquiry received & recorded in Admin!');
+
+    try {
+      const res = await api.createInquiry(inquiryData);
+      if (res?.data?.id) {
+        setInquiries((prev) => prev.map((i) => (i.id === tempId ? { ...i, id: res.data.id } : i)));
+      }
+    } catch {
+      // Handled
+    }
     return newInq;
   };
 
-  const updateInquiryStatus = (id, status) => {
+  const updateInquiryStatus = async (id, status) => {
     setInquiries((prev) =>
       prev.map((inq) => (inq.id === id ? { ...inq, status } : inq))
     );
     showToast(`Inquiry status updated to "${status}"`);
+
+    try {
+      await api.updateInquiryStatus(id, status);
+    } catch {
+      // Handled
+    }
   };
 
-  const deleteInquiry = (id) => {
+  const deleteInquiry = async (id) => {
     setInquiries((prev) => prev.filter((inq) => inq.id !== id));
     showToast('Inquiry lead removed', 'info');
+
+    try {
+      await api.deleteInquiry(id);
+    } catch {
+      // Handled
+    }
+  };
+
+  // Seed backend database
+  const seedBackendDatabase = async (force = false) => {
+    try {
+      const res = await api.seedDatabase(force);
+      showToast(res.message || 'Database seeded successfully!');
+      // Re-fetch
+      const [imgsRes, srvsRes, galsRes, pkgsRes, contactRes, inqsRes] = await Promise.allSettled([
+        api.getImages(),
+        api.getServices(),
+        api.getGallery(),
+        api.getPackages(),
+        api.getContactInfo(),
+        api.getInquiries(),
+      ]);
+      if (imgsRes.status === 'fulfilled' && imgsRes.value?.data) setImages(imgsRes.value.data);
+      if (srvsRes.status === 'fulfilled' && srvsRes.value?.data) setServices(srvsRes.value.data);
+      if (galsRes.status === 'fulfilled' && galsRes.value?.data) setGallery(galsRes.value.data);
+      if (pkgsRes.status === 'fulfilled' && pkgsRes.value?.data) setPackages(pkgsRes.value.data);
+      if (contactRes.status === 'fulfilled' && contactRes.value?.data) setContactInfo(contactRes.value.data);
+      if (inqsRes.status === 'fulfilled' && inqsRes.value?.data) setInquiries(inqsRes.value.data);
+    } catch (err) {
+      showToast('Database seeding failed: ' + err.message, 'info');
+    }
   };
 
   // Reset to sample defaults
@@ -773,7 +970,7 @@ export function StudioProvider({ children }) {
     setPackages(defaultPackages);
     setContactInfo(defaultContactInfo);
     setInquiries(defaultInquiries);
-    showToast('Restored all demo studio content to factory default', 'info');
+    showToast('Restored demo studio content to factory default', 'info');
   };
 
   const value = {
@@ -786,6 +983,7 @@ export function StudioProvider({ children }) {
     inquiries,
     currentView,
     toastMessage,
+    backendStatus,
     // Navigation
     navigateTo,
     showToast,
@@ -809,8 +1007,9 @@ export function StudioProvider({ children }) {
     addInquiry,
     updateInquiryStatus,
     deleteInquiry,
-    // Reset
+    // Reset & Seed
     resetToDefaults,
+    seedBackendDatabase,
   };
 
   return (

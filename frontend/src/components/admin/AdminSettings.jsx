@@ -2,7 +2,18 @@ import React from 'react';
 import { useStudio } from '../../context/StudioContext';
 
 export default function AdminSettings() {
-  const { images, services, gallery, packages, contactInfo, inquiries, resetToDefaults, showToast } = useStudio();
+  const {
+    images,
+    services,
+    gallery,
+    packages,
+    contactInfo,
+    inquiries,
+    resetToDefaults,
+    seedBackendDatabase,
+    backendStatus,
+    showToast,
+  } = useStudio();
 
   const handleExportJson = () => {
     const backup = {
@@ -34,6 +45,49 @@ export default function AdminSettings() {
   return (
     <div className="admin-settings-view">
       <div className="row g-4">
+        {/* MongoDB Database Sync */}
+        <div className="col-12">
+          <div className="admin-card" style={{ borderColor: 'rgba(16, 185, 129, 0.3)' }}>
+            <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div>
+                <div className="d-flex align-items-center gap-2 mb-1">
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, margin: 0, fontFamily: 'var(--admin-font-serif)' }}>
+                    MongoDB Database Synchronization
+                  </h3>
+                  <span
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      padding: '2px 8px',
+                      borderRadius: '12px',
+                      background: backendStatus === 'connected' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+                      color: backendStatus === 'connected' ? '#10B981' : '#F59E0B',
+                    }}
+                  >
+                    {backendStatus === 'connected' ? '● Connected' : '● Ready to Connect'}
+                  </span>
+                </div>
+                <p style={{ fontSize: '0.84rem', color: 'var(--admin-text-muted)', margin: 0 }}>
+                  Populate your MongoDB database with the default photography services, portfolio reels, packages, and studio contact data.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                className="btn-gold-primary"
+                style={{ whiteSpace: 'nowrap' }}
+                onClick={() => {
+                  if (window.confirm('Seed your MongoDB database collections with studio data?')) {
+                    seedBackendDatabase(true);
+                  }
+                }}
+              >
+                <span>⚡ Seed Database Now</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Backup & Export */}
         <div className="col-12 col-md-6">
           <div className="admin-card h-100">

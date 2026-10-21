@@ -2,7 +2,7 @@ import React from 'react';
 import { useStudio } from '../../context/StudioContext';
 
 export default function AdminHeader({ activeTab, onQuickAdd, setSidebarOpen }) {
-  const { navigateTo } = useStudio();
+  const { navigateTo, backendStatus } = useStudio();
 
   const tabTitles = {
     overview: { title: 'Dashboard Overview', sub: 'Velu Photography Studio analytics & quick controls' },
@@ -43,8 +43,28 @@ export default function AdminHeader({ activeTab, onQuickAdd, setSidebarOpen }) {
       <div className="admin-header-actions">
         {/* Status Indicator */}
         <div className="admin-status-indicator d-none d-md-flex">
-          <span className="admin-status-dot"></span>
-          <span>Studio Online</span>
+          <span
+            className="admin-status-dot"
+            style={{
+              background:
+                backendStatus === 'connected'
+                  ? '#10B981'
+                  : backendStatus === 'db-pending'
+                  ? '#F59E0B'
+                  : '#B9822E',
+              boxShadow:
+                backendStatus === 'connected'
+                  ? '0 0 8px #10B981'
+                  : '0 0 8px #F59E0B',
+            }}
+          />
+          <span>
+            {backendStatus === 'connected'
+              ? 'MongoDB Live'
+              : backendStatus === 'db-pending'
+              ? 'API Active'
+              : 'Studio Ready'}
+          </span>
         </div>
 
         {/* Quick Add Button if applicable */}
