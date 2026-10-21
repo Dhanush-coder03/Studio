@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useStudio } from '../context/StudioContext';
 
-export default function BookModal({ isOpen, onClose }) {
+export default function BookModal({ isOpen, onClose, initialPackage = '' }) {
+  const { addInquiry } = useStudio();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -8,7 +10,8 @@ export default function BookModal({ isOpen, onClose }) {
     email: '',
     weddingDate: '',
     location: '',
-    eventType: 'Traditional Tamil Wedding',
+    eventType: initialPackage || 'Traditional Tamil Wedding',
+    packageInterested: initialPackage || 'Gold Cinematic Luxury',
   });
 
   useEffect(() => {
@@ -18,20 +21,36 @@ export default function BookModal({ isOpen, onClose }) {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
+      if (initialPackage) {
+        setFormData((prev) => ({
+          ...prev,
+          eventType: initialPackage,
+          packageInterested: initialPackage,
+        }));
+      }
     } else {
       document.body.style.overflow = 'unset';
-      setSubmitted(false);
     }
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, initialPackage]);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addInquiry({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      weddingDate: formData.weddingDate,
+      eventType: formData.eventType,
+      packageInterested: formData.packageInterested || initialPackage,
+      location: formData.location,
+      status: 'New',
+    });
     setSubmitted(true);
   };
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useStudio } from '../context/StudioContext';
 
 export default function Navbar({ onBookClick }) {
+  const { navigateTo } = useStudio();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState('Home');
@@ -23,14 +25,21 @@ export default function Navbar({ onBookClick }) {
     { label: 'Services', href: '#services' },
     { label: 'Gallery', href: '#gallery' },
     { label: 'Packages', href: '#packages' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 
-  const handleNavClick = (e, label) => {
+  const handleNavClick = (e, item) => {
     e.preventDefault();
-    setActiveNav(label);
+    setActiveNav(item.label);
     setMobileMenuOpen(false);
+
+    if (item.href.startsWith('#')) {
+      const targetElem = document.querySelector(item.href);
+      if (targetElem) {
+        targetElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -41,7 +50,7 @@ export default function Navbar({ onBookClick }) {
           <a 
             href="#home" 
             className="brand-logo-link" 
-            onClick={(e) => handleNavClick(e, 'Home')}
+            onClick={(e) => handleNavClick(e, { label: 'Home', href: '#home' })}
             aria-label="Lensify Wedding Photography Studio Home"
           >
             <div className="brand-icon-wrapper">
@@ -79,7 +88,7 @@ export default function Navbar({ onBookClick }) {
                   <a
                     href={item.href}
                     className={`nav-item-link ${activeNav === item.label ? 'active' : ''}`}
-                    onClick={(e) => handleNavClick(e, item.label)}
+                    onClick={(e) => handleNavClick(e, item)}
                   >
                     {item.label}
                   </a>
@@ -88,8 +97,35 @@ export default function Navbar({ onBookClick }) {
             </ul>
           </nav>
 
-          {/* Right Action: Book Now Pill Button */}
-          <div className="nav-action-wrapper d-none d-lg-flex">
+          {/* Right Action: Admin Portal & Book Now Pill Button */}
+          <div className="nav-action-wrapper d-none d-lg-flex align-items-center gap-2">
+            <button
+              type="button"
+              className="btn-admin-nav-pill"
+              onClick={() => navigateTo('admin')}
+              title="Open Admin Dashboard"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 14px',
+                borderRadius: '25px',
+                background: 'rgba(22, 22, 22, 0.85)',
+                color: '#DFB25E',
+                border: '1px solid rgba(185, 130, 46, 0.5)',
+                fontSize: '0.82rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.25s ease',
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Admin</span>
+            </button>
+
             <button 
               type="button" 
               className="btn-nav-book" 
@@ -137,7 +173,7 @@ export default function Navbar({ onBookClick }) {
               <a
                 href={item.href}
                 className={`mobile-nav-link ${activeNav === item.label ? 'active' : ''}`}
-                onClick={(e) => handleNavClick(e, item.label)}
+                onClick={(e) => handleNavClick(e, item)}
               >
                 {item.label}
               </a>
@@ -145,7 +181,7 @@ export default function Navbar({ onBookClick }) {
           ))}
         </ul>
 
-        <div className="mt-4">
+        <div className="mt-4 d-flex flex-column gap-2">
           <button 
             type="button" 
             className="btn-pill-rose" 
@@ -168,6 +204,22 @@ export default function Navbar({ onBookClick }) {
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
+          </button>
+
+          <button
+            type="button"
+            className="btn-admin-secondary"
+            style={{ width: '100%', justifyContent: 'center', borderColor: 'var(--color-gold)' }}
+            onClick={() => {
+              setMobileMenuOpen(false);
+              navigateTo('admin');
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Admin Dashboard</span>
           </button>
         </div>
       </div>
