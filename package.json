@@ -14,5 +14,15 @@
     "server:dev": "npm run dev --prefix backend",
     "seed": "npm run seed --prefix backend",
     "install:all": "npm install --prefix frontend && npm install --prefix backend"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
   }
 }
