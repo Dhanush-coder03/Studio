@@ -220,20 +220,20 @@ export default function HeroLens({ mouseOffset }) {
                   />
                 </defs>
 
-                {/* Top Engraving: LENSIFY */}
+                {/* Top Engraving: VELU PHOTOGRAPHS */}
                 <text
                   fill="#EDE8DF"
-                  fontSize="12.5"
+                  fontSize="10"
                   fontFamily="'Plus Jakarta Sans', sans-serif"
                   fontWeight="700"
-                  letterSpacing="0.32em"
+                  letterSpacing="0.22em"
                   opacity="0.9"
                 >
                   <textPath href="#lensTextPathTop" startOffset="50%" textAnchor="middle">
-                    LENSIFY
+                    VELU PHOTOGRAPHS
                   </textPath>
                 </text>
-
+                
                 {/* Bottom Engraving: 24-70mm 1:2.8 L ø 82mm */}
                 <text
                   fill="#DDD7CB"
@@ -254,8 +254,10 @@ export default function HeroLens({ mouseOffset }) {
                 {/* Large Emotional South Indian Wedding Couple Photograph */}
                 <img
                   src={heroCoupleImg}
-                  alt="Tamil South Indian Wedding Couple"
+                  alt="Velu Photographs - Luxury Wedding and Candid Photography Couple Portrait"
                   className="lens-couple-image animate-couple-zoom"
+                  loading="eager"
+                  decoding="async"
                 />
 
                 {/* Realistic Multi-Coated Optical Glass Reflection */}

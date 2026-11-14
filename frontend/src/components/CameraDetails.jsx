@@ -8,24 +8,30 @@ export default function CameraDetails() {
     <section className="camera-details-section" id="cameras">
       <div className="container">
         <div className="camera-details-header">
-          <span className="camera-eyebrow">Equipment</span>
-          <h2 className="camera-title">Our Cinematic Arsenal</h2>
-          <p className="camera-subtitle">We capture your moments using industry-leading cameras to deliver stunning visual quality.</p>
+          <span className="camera-eyebrow">Velu Photographs &bull; Cinema Equipment</span>
+          <h2 className="camera-title">Professional Photography &amp; 4K Cinema Gear</h2>
+          <p className="camera-subtitle">At Velu Photographs, we capture your memories using industry-leading cameras to deliver stunning cinematic wedding and candid photography.</p>
         </div>
         
         <div className="camera-grid">
           {/* Sony Alpha 7 */}
           <div className="camera-card" data-aos="fade-up" data-aos-delay="0">
             <div className="camera-image-container">
-              <img src={sonyAlpha7Img} alt="Sony Alpha 7" className="camera-image" />
+              <img
+                src={sonyAlpha7Img}
+                alt="Sony Alpha 7 IV Full Frame Camera used for Candid Wedding Photography by Velu Photographs"
+                className="camera-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className="camera-info">
-              <h3>Sony Alpha 7</h3>
-              <p>Exceptional full-frame image quality with breathtaking low-light performance. Perfect for capturing natural, stunning portraits and fast action in any environment.</p>
+              <h3>Sony Alpha 7 IV</h3>
+              <p>Exceptional full-frame image quality with breathtaking low-light performance. Perfect for capturing natural, stunning candid wedding portraits and emotional moments.</p>
               <ul className="camera-features">
                 <li>Full-Frame Sensor</li>
                 <li>4K Video Recording</li>
-                <li>Superior Autofocus</li>
+                <li>Superior Real-Time Autofocus</li>
               </ul>
             </div>
           </div>
@@ -33,7 +39,13 @@ export default function CameraDetails() {
           {/* Sony FX3 */}
           <div className="camera-card" data-aos="fade-up" data-aos-delay="100">
             <div className="camera-image-container">
-              <img src={sonyFx3Img} alt="Sony FX3" className="camera-image" />
+              <img
+                src={sonyFx3Img}
+                alt="Sony FX3 Cinema Line Camera for 4K Wedding Films at Velu Photographs"
+                className="camera-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className="camera-info">
               <h3>Sony FX3</h3>

@@ -6,7 +6,7 @@ export default function HeroContent({ onBookClick, onReelClick }) {
       {/* Eyebrow: Gold Line + Uppercase Studio Name */}
       <div className="hero-eyebrow-container animate-eyebrow">
         <span className="hero-eyebrow-gold-line" />
-        <span className="hero-eyebrow-text">WEDDING PHOTOGRAPHY STUDIO</span>
+        <span className="hero-eyebrow-text">VELU PHOTOGRAPHS &bull; WEDDING &amp; CANDID STUDIO</span>
       </div>
 
       {/* Main Headline: Editorial Luxury Serif */}
@@ -17,15 +17,16 @@ export default function HeroContent({ onBookClick, onReelClick }) {
         <span className="headline-row animate-title-line-2">
           Your <span className="headline-gold-word">Special Day</span>
         </span>
+        <span className="visually-hidden"> - Velu Photographs Professional Wedding &amp; Candid Photography</span>
       </h1>
 
       {/* Subtitle: Clean Dual-Line Sans-Serif */}
       <div className="hero-subtitle-container animate-subtitle">
         <p className="hero-subtitle-text">
-          Weddings &nbsp;|&nbsp; Pre Weddings &nbsp;|&nbsp; Family Events
+          Wedding Photography &nbsp;|&nbsp; Pre-Wedding Photography &nbsp;|&nbsp; Professional Photography
         </p>
         <p className="hero-subtitle-text">
-          Traditional Functions &nbsp;|&nbsp; Candid Photography
+          Traditional Functions &nbsp;|&nbsp; Velu Candid Photography &nbsp;|&nbsp; Gobichettipalayam, Erode
         </p>
       </div>
 

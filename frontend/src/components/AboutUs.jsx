@@ -6,15 +6,21 @@ export default function AboutUs() {
     <section className="about-section" id="about">
       <div className="container about-container">
         <div className="about-image-wrapper" data-aos="fade-right">
-          <img src={outdoorImg} alt="Our Creative Team" className="about-image" />
+          <img
+            src={outdoorImg}
+            alt="Velu Photographs - Professional Wedding & Candid Photography Team in Gobichettipalayam Erode"
+            className="about-image"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         
         <div className="about-content" data-aos="fade-left">
           <span className="about-eyebrow">The Studio Behind The Lens</span>
-          <h2 className="about-title">Crafting Timeless Memories Since 2010</h2>
+          <h2 className="about-title">Velu Photographs &mdash; Crafting Timeless Memories Since 2010</h2>
           
           <p className="about-description">
-            We are a team of passionate storytellers, visual artists, and dreamers dedicated to capturing the most beautiful moments of your life. With a blend of cinematic elegance and candid authenticity, we ensure your memories are preserved in the most breathtaking way possible.
+            At <strong>Velu Photographs</strong>, we are a passionate crew of visual storytellers, cinematographers, and candid photographers based in Kurumathur, Gobichettipalayam (Erode). With a seamless blend of cinematic elegance and candid authenticity, we capture professional wedding photography, pre-wedding romance, traditional South Indian ceremonies, and family milestones across Tamil Nadu.
           </p>
 
           <div className="about-stats">

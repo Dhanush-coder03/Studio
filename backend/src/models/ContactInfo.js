@@ -4,47 +4,47 @@ const contactInfoSchema = new mongoose.Schema(
   {
     studioName: {
       type: String,
-      default: 'Velu Photography Studio',
+      default: 'Velu Photographs',
       trim: true,
     },
     tagline: {
       type: String,
-      default: 'Luxury Wedding Photography & Cinematic Films',
+      default: 'Luxury Wedding Photography & Candid Studio',
       trim: true,
     },
     ownerName: {
       type: String,
-      default: 'Velu Rathinam',
+      default: 'Velu',
       trim: true,
     },
     phone: {
       type: String,
-      default: '+91 98401 23456',
+      default: '+91 96007 77591',
       trim: true,
     },
     altPhone: {
       type: String,
-      default: '+91 94440 98765',
+      default: '+91 96007 77591',
       trim: true,
     },
     email: {
       type: String,
-      default: 'hello@veluphotography.com',
+      default: 'contact@veluphotography.com',
       trim: true,
     },
     address: {
       type: String,
-      default: 'No. 48, Heritage Square, Opp. Express Avenue, Anna Salai, Chennai, Tamil Nadu 600002',
+      default: 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 638457',
       trim: true,
     },
     workingHours: {
       type: String,
-      default: 'Mon - Sat: 9:30 AM - 8:30 PM (Sunday by Appointment)',
+      default: 'Mon - Sun: 9:00 AM - 9:00 PM',
       trim: true,
     },
     whatsapp: {
       type: String,
-      default: '+919840123456',
+      default: '919600777591',
       trim: true,
     },
     instagram: {

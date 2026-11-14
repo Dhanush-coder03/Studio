@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 
 // Route imports
+import authRoutes from './routes/authRoutes.js';
 import imageRoutes from './routes/imageRoutes.js';
 import serviceRoutes from './routes/serviceRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
@@ -46,6 +47,7 @@ app.use(async (req, res, next) => {
 // ==========================================
 // API Routes
 // ==========================================
+app.use('/api/auth', authRoutes);
 app.use('/api/images', imageRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/gallery', galleryRoutes);

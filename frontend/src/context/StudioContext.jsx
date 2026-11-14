@@ -413,19 +413,19 @@ const defaultPackages = [
 ];
 
 const defaultContactInfo = {
-  studioName: 'Velu Photography Studio',
-  tagline: 'Luxury Wedding Photography & Cinematic Films',
-  ownerName: 'Velu Rathinam',
-  phone: '+91 98401 23456',
-  altPhone: '+91 94440 98765',
-  email: 'hello@veluphotography.com',
-  address: 'No. 48, Heritage Square, Opp. Express Avenue, Anna Salai, Chennai, Tamil Nadu 600002',
-  workingHours: 'Mon - Sat: 9:30 AM - 8:30 PM (Sunday by Appointment)',
-  whatsapp: '+919840123456',
+  studioName: 'Velu Photographs',
+  tagline: 'Luxury Wedding Photography & Candid Studio',
+  ownerName: 'Velu',
+  phone: '+91 96007 77591',
+  altPhone: '+91 96007 77591',
+  email: 'contact@veluphotography.com',
+  address: 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 638457',
+  workingHours: 'Mon - Sun: 9:00 AM - 9:00 PM',
+  whatsapp: '919600777591',
   instagram: 'https://instagram.com/veluphotography',
   facebook: 'https://facebook.com/veluphotography',
   youtube: 'https://youtube.com/@veluphotography',
-  mapEmbedUrl: 'https://maps.google.com/?q=Anna+Salai+Chennai',
+  mapEmbedUrl: 'https://maps.google.com/?q=Kurumathur+Gobichettipalayam+Erode+Tamil+Nadu+638457',
 };
 
 const defaultInquiries = [
@@ -526,7 +526,17 @@ export function StudioProvider({ children }) {
   const [contactInfo, setContactInfo] = useState(() => {
     try {
       const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_contactInfo`);
-      return saved ? JSON.parse(saved) : defaultContactInfo;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // If still contains legacy placeholder address or previous 9-digit phone, upgrade
+        if ((parsed.address && parsed.address.includes('Anna Salai')) || parsed.phone === '960077591' || parsed.whatsapp === '91960077591') {
+          const updated = { ...parsed, ...defaultContactInfo };
+          localStorage.setItem(`${LOCAL_STORAGE_KEY}_contactInfo`, JSON.stringify(updated));
+          return updated;
+        }
+        return parsed;
+      }
+      return defaultContactInfo;
     } catch {
       return defaultContactInfo;
     }
@@ -544,6 +554,35 @@ export function StudioProvider({ children }) {
   // Current view mode: 'website' or 'admin'
   const [currentView, setCurrentView] = useState(() => {
     return window.location.hash === '#admin' ? 'admin' : 'website';
+  });
+
+  // Admin Authentication State
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
+    try {
+      const sessionAuth = sessionStorage.getItem('velu_admin_authenticated');
+      const localAuth = localStorage.getItem('velu_admin_authenticated');
+      return sessionAuth === 'true' || localAuth === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const [adminCredentials, setAdminCredentials] = useState(() => {
+    try {
+      const saved = localStorage.getItem('velu_admin_credentials');
+      return saved ? JSON.parse(saved) : { email: 'admin@velustudio.com', password: 'admin123' };
+    } catch {
+      return { email: 'admin@velustudio.com', password: 'admin123' };
+    }
+  });
+
+  const [adminUser, setAdminUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('velu_admin_user') || sessionStorage.getItem('velu_admin_user');
+      return saved ? JSON.parse(saved) : { email: 'admin@velustudio.com', name: 'Studio Administrator', role: 'admin' };
+    } catch {
+      return { email: 'admin@velustudio.com', name: 'Studio Administrator', role: 'admin' };
+    }
   });
 
   // Toast feedback notifications
@@ -690,6 +729,97 @@ export function StudioProvider({ children }) {
     } else {
       window.location.hash = '#home';
     }
+  };
+
+  // ==========================================
+  // Admin Authentication Actions
+  // ==========================================
+  const loginAdmin = async (email, password, remember = false) => {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const cleanPass = password || '';
+
+    // 1. Try Backend Authentication if available
+    if (backendStatus === 'connected' || backendStatus === 'db-pending') {
+      try {
+        const res = await api.login({ email: cleanEmail, password: cleanPass });
+        if (res && res.success) {
+          const authUser = res.user || { email: cleanEmail, role: 'admin', name: 'Studio Administrator' };
+          setIsAdminAuthenticated(true);
+          setAdminUser(authUser);
+          if (remember) {
+            localStorage.setItem('velu_admin_authenticated', 'true');
+            localStorage.setItem('velu_admin_user', JSON.stringify(authUser));
+          } else {
+            sessionStorage.setItem('velu_admin_authenticated', 'true');
+            sessionStorage.setItem('velu_admin_user', JSON.stringify(authUser));
+          }
+          showToast('Welcome back, Administrator!');
+          return { success: true };
+        }
+      } catch (err) {
+        // If server explicitly returned invalid credentials
+        if (err.message && !err.message.includes('Failed to fetch') && !err.message.includes('NetworkError')) {
+          return { success: false, message: err.message };
+        }
+      }
+    }
+
+    // 2. Client-side verified credentials fallback
+    if (cleanEmail === adminCredentials.email.toLowerCase() && cleanPass === adminCredentials.password) {
+      const authUser = { email: cleanEmail, role: 'admin', name: 'Studio Administrator' };
+      setIsAdminAuthenticated(true);
+      setAdminUser(authUser);
+      if (remember) {
+        localStorage.setItem('velu_admin_authenticated', 'true');
+        localStorage.setItem('velu_admin_user', JSON.stringify(authUser));
+      } else {
+        sessionStorage.setItem('velu_admin_authenticated', 'true');
+        sessionStorage.setItem('velu_admin_user', JSON.stringify(authUser));
+      }
+      showToast('Welcome back, Administrator!');
+      return { success: true };
+    }
+
+    return {
+      success: false,
+      message: 'Invalid email or password. Please verify your credentials.',
+    };
+  };
+
+  const logoutAdmin = () => {
+    setIsAdminAuthenticated(false);
+    try {
+      sessionStorage.removeItem('velu_admin_authenticated');
+      sessionStorage.removeItem('velu_admin_user');
+      localStorage.removeItem('velu_admin_authenticated');
+      localStorage.removeItem('velu_admin_user');
+    } catch (e) {
+      console.warn('Storage cleanup failed', e);
+    }
+    showToast('Signed out of Studio Admin suite', 'info');
+  };
+
+  const updateAdminCredentials = (currentPassword, newEmail, newPassword) => {
+    if (currentPassword !== adminCredentials.password) {
+      return { success: false, message: 'Current password is incorrect.' };
+    }
+    if (!newEmail || !newPassword || newPassword.length < 4) {
+      return { success: false, message: 'Please provide a valid email and password (min 4 characters).' };
+    }
+
+    const updated = {
+      email: newEmail.trim().toLowerCase(),
+      password: newPassword,
+    };
+    setAdminCredentials(updated);
+    setAdminUser((prev) => ({ ...prev, email: updated.email }));
+    try {
+      localStorage.setItem('velu_admin_credentials', JSON.stringify(updated));
+    } catch (e) {
+      console.warn('Saving credentials failed', e);
+    }
+    showToast('Admin login credentials updated successfully!');
+    return { success: true };
   };
 
   // ==========================================
@@ -984,6 +1114,13 @@ export function StudioProvider({ children }) {
     currentView,
     toastMessage,
     backendStatus,
+    // Admin Auth State & Methods
+    isAdminAuthenticated,
+    adminUser,
+    adminCredentials,
+    loginAdmin,
+    logoutAdmin,
+    updateAdminCredentials,
     // Navigation
     navigateTo,
     showToast,

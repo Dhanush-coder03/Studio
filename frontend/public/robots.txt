@@ -1,0 +1,11 @@
+# Robots.txt for Velu Photographs
+# Website: https://studio-eosin-phi.vercel.app/
+
+User-agent: *
+Allow: /
+Disallow: /#admin
+Disallow: /api/
+
+# Official XML Sitemap
+Sitemap: https://studio-eosin-phi.vercel.app/sitemap.xml
+

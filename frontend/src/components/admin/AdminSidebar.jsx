@@ -2,7 +2,7 @@ import React from 'react';
 import { useStudio } from '../../context/StudioContext';
 
 export default function AdminSidebar({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }) {
-  const { images, services, gallery, packages, inquiries, navigateTo } = useStudio();
+  const { images, services, gallery, packages, inquiries, navigateTo, logoutAdmin, adminUser } = useStudio();
 
   const navItems = [
     {
@@ -130,8 +130,34 @@ export default function AdminSidebar({ activeTab, setActiveTab, sidebarOpen, set
         ))}
       </ul>
 
-      {/* Footer Return Action */}
+      {/* Footer Return & Logout Actions */}
       <div className="admin-sidebar-footer">
+        <div className="admin-sidebar-user mb-2 px-2 py-1 d-flex align-items-center gap-2">
+          <div
+            style={{
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              background: 'rgba(185, 130, 46, 0.2)',
+              border: '1px solid var(--admin-gold)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              color: 'var(--admin-gold-light)',
+            }}
+          >
+            A
+          </div>
+          <div style={{ overflow: 'hidden' }}>
+            <div style={{ fontSize: '0.76rem', fontWeight: 600, color: 'var(--admin-text-main)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+              {adminUser?.email || 'admin@velustudio.com'}
+            </div>
+            <div style={{ fontSize: '0.65rem', color: 'var(--admin-text-dim)' }}>Administrator</div>
+          </div>
+        </div>
+
         <button
           type="button"
           className="btn-view-site"
@@ -143,6 +169,19 @@ export default function AdminSidebar({ activeTab, setActiveTab, sidebarOpen, set
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
           <span>View Live Website</span>
+        </button>
+
+        <button
+          type="button"
+          className="btn-sidebar-logout"
+          onClick={logoutAdmin}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Log Out</span>
         </button>
       </div>
     </aside>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStudio } from '../context/StudioContext';
+import AdminLogin from '../components/admin/AdminLogin';
 import AdminSidebar from '../components/admin/AdminSidebar';
 import AdminHeader from '../components/admin/AdminHeader';
 import AdminOverview from '../components/admin/AdminOverview';
@@ -15,7 +16,24 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(null); // 'addImage', 'addService', 'addGallery', 'addPackage', 'addContact'
-  const { toastMessage } = useStudio();
+  const { isAdminAuthenticated, toastMessage } = useStudio();
+
+  // If user is not logged in as admin, display the Admin Login gate
+  if (!isAdminAuthenticated) {
+    return (
+      <div className="admin-root" style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <AdminLogin />
+        {toastMessage && (
+          <div className={`admin-toast ${toastMessage.type || 'success'}`}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--admin-gold)" strokeWidth="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>{toastMessage.message}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   // Quick add dispatcher depending on active tab or explicit modal
   const handleHeaderQuickAdd = () => {

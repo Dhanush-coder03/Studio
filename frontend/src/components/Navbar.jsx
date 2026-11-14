@@ -51,7 +51,7 @@ export default function Navbar({ onBookClick }) {
             href="#home" 
             className="brand-logo-link" 
             onClick={(e) => handleNavClick(e, { label: 'Home', href: '#home' })}
-            aria-label="Lensify Wedding Photography Studio Home"
+            aria-label="Velu Photographs - Wedding and Candid Photography Studio Home"
           >
             <div className="brand-icon-wrapper">
               <svg 
@@ -77,7 +77,7 @@ export default function Navbar({ onBookClick }) {
                 <circle cx="50" cy="50" r="6" fill="#DF2048" />
               </svg>
             </div>
-            <span className="brand-wordmark">Velu Photography</span>
+            <span className="brand-wordmark">Velu Photographs</span>
           </a>
 
           {/* Desktop Navigation Links */}

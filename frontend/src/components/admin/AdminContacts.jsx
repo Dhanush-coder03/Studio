@@ -323,7 +323,7 @@ export default function AdminContacts({ isModalOpen, setIsModalOpen }) {
                   <input
                     type="text"
                     required
-                    placeholder="+91 98401 23456"
+                    placeholder="960077591"
                     className="admin-input"
                     value={studioFormData.phone}
                     onChange={(e) => setStudioFormData({ ...studioFormData, phone: e.target.value })}
@@ -336,7 +336,7 @@ export default function AdminContacts({ isModalOpen, setIsModalOpen }) {
                   <label className="admin-label">Alternate Booking Phone</label>
                   <input
                     type="text"
-                    placeholder="+91 94440 98765"
+                    placeholder="960077591"
                     className="admin-input"
                     value={studioFormData.altPhone}
                     onChange={(e) => setStudioFormData({ ...studioFormData, altPhone: e.target.value })}

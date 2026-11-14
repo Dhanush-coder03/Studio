@@ -18,7 +18,7 @@ export default function Footer() {
               {contactInfo.studioName}
             </h2>
             <p>
-              {contactInfo.tagline}. Capturing your most cherished celebrations with cinematic elegance and candid artistry.
+              {contactInfo.tagline}. Preserving your most cherished celebrations with professional wedding photography, candid moments, and cinematic films across Gobichettipalayam, Erode, and South India.
             </p>
             <div className="social-links">
               <a href={contactInfo.instagram || '#'} className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">

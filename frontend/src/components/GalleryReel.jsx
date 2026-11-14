@@ -17,8 +17,8 @@ export default function GalleryReel() {
     <section className="gallery-reel-section">
       <div className="container">
         <div className="gallery-reel-header">
-          <span className="gallery-reel-eyebrow">Our Masterpieces</span>
-          <h2 className="gallery-reel-title">Cinematic Gallery Reel</h2>
+          <span className="gallery-reel-eyebrow">Velu Photographs &bull; Our Masterpieces</span>
+          <h2 className="gallery-reel-title">Cinematic Wedding &amp; Candid Gallery Reel</h2>
         </div>
       </div>
 
@@ -27,7 +27,12 @@ export default function GalleryReel() {
           <div className="film-strip">
             {doubledImages.map((src, idx) => (
               <div className="film-frame" key={`frame-${idx}`}>
-                <img src={src} alt={`Gallery Frame ${idx + 1}`} loading="lazy" />
+                <img
+                  src={src}
+                  alt={`Velu Photographs Wedding and Candid Photography Frame ${idx + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>

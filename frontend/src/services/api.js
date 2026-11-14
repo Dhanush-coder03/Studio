@@ -34,6 +34,10 @@ export const api = {
   checkHealth: () => request('/health'),
   seedDatabase: (force = false) => request('/seed', { method: 'POST', body: JSON.stringify({ force }) }),
 
+  // Authentication
+  login: (credentials) => request('/auth/login', { method: 'POST', body: JSON.stringify(credentials) }),
+  verifySession: (token) => request('/auth/verify', { headers: { Authorization: `Bearer ${token}` } }),
+
   // Images
   getImages: (params = {}) => {
     const query = new URLSearchParams(params).toString();

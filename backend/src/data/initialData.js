@@ -286,19 +286,19 @@ export const initialPackages = [
 ];
 
 export const initialContactInfo = {
-  studioName: 'Velu Photography Studio',
-  tagline: 'Luxury Wedding Photography & Cinematic Films',
-  ownerName: 'Velu Rathinam',
-  phone: '+91 98401 23456',
-  altPhone: '+91 94440 98765',
-  email: 'hello@veluphotography.com',
-  address: 'No. 48, Heritage Square, Opp. Express Avenue, Anna Salai, Chennai, Tamil Nadu 600002',
-  workingHours: 'Mon - Sat: 9:30 AM - 8:30 PM (Sunday by Appointment)',
-  whatsapp: '+919840123456',
+  studioName: 'Velu Photographs',
+  tagline: 'Luxury Wedding Photography & Candid Studio',
+  ownerName: 'Velu',
+  phone: '+91 96007 77591',
+  altPhone: '+91 96007 77591',
+  email: 'contact@veluphotography.com',
+  address: 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 638457',
+  workingHours: 'Mon - Sun: 9:00 AM - 9:00 PM',
+  whatsapp: '919600777591',
   instagram: 'https://instagram.com/veluphotography',
   facebook: 'https://facebook.com/veluphotography',
   youtube: 'https://youtube.com/@veluphotography',
-  mapEmbedUrl: 'https://maps.google.com/?q=Anna+Salai+Chennai',
+  mapEmbedUrl: 'https://maps.google.com/?q=Kurumathur+Gobichettipalayam+Erode+Tamil+Nadu+638457',
 };
 
 export const initialInquiries = [

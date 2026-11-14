@@ -227,17 +227,17 @@ export default function LensComposition({ mouseOffset }) {
                   />
                 </defs>
 
-                {/* Top Engraving: LENSIFY */}
+                {/* Top Engraving: VELU PHOTOGRAPHS */}
                 <text
                   fill="#EFE7D9"
-                  fontSize="12.5"
+                  fontSize="10"
                   fontFamily="'Plus Jakarta Sans', sans-serif"
                   fontWeight="700"
-                  letterSpacing="0.32em"
+                  letterSpacing="0.22em"
                   opacity="0.92"
                 >
                   <textPath href="#lensPathTop" startOffset="50%" textAnchor="middle">
-                    LENSIFY
+                    VELU PHOTOGRAPHS
                   </textPath>
                 </text>
 
@@ -261,8 +261,10 @@ export default function LensComposition({ mouseOffset }) {
                 {/* Cinematic South Indian Wedding Couple Portrait */}
                 <img
                   src={heroCoupleImg}
-                  alt="South Indian Wedding Couple in Lens"
+                  alt="Velu Photographs - Luxury Candid Wedding Photography Couple Portrait"
                   className="lens-couple-portrait animate-couple-zoom"
+                  loading="eager"
+                  decoding="async"
                 />
 
                 {/* Optical Glass Multi-Coated Reflection Overlays */}

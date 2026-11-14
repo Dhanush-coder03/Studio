@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStudio } from '../../context/StudioContext';
 
 export default function AdminSettings() {
@@ -13,7 +13,15 @@ export default function AdminSettings() {
     seedBackendDatabase,
     backendStatus,
     showToast,
+    adminCredentials,
+    updateAdminCredentials,
   } = useStudio();
+
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newEmail, setNewEmail] = useState(adminCredentials?.email || 'admin@velustudio.com');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [securityStatus, setSecurityStatus] = useState(null);
 
   const handleExportJson = () => {
     const backup = {
@@ -39,6 +47,34 @@ export default function AdminSettings() {
   const handleResetData = () => {
     if (window.confirm('Reset all Studio images, services, gallery items, packages, and inquiries to factory demo defaults?')) {
       resetToDefaults();
+    }
+  };
+
+  const handleUpdateSecurity = (e) => {
+    e.preventDefault();
+    setSecurityStatus(null);
+
+    if (!currentPassword) {
+      setSecurityStatus({ type: 'error', message: 'Please enter your current password to authorize changes.' });
+      return;
+    }
+    if (!newPassword || newPassword.length < 4) {
+      setSecurityStatus({ type: 'error', message: 'New password must be at least 4 characters.' });
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setSecurityStatus({ type: 'error', message: 'New password and confirmation do not match.' });
+      return;
+    }
+
+    const res = updateAdminCredentials(currentPassword, newEmail, newPassword);
+    if (res.success) {
+      setSecurityStatus({ type: 'success', message: 'Admin email and password updated successfully!' });
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } else {
+      setSecurityStatus({ type: 'error', message: res.message });
     }
   };
 
@@ -85,6 +121,99 @@ export default function AdminSettings() {
                 <span>⚡ Seed Database Now</span>
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Admin Security & Password Settings */}
+        <div className="col-12">
+          <div className="admin-card" style={{ borderColor: 'rgba(185, 130, 46, 0.3)' }}>
+            <div className="d-flex align-items-center gap-2 mb-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--admin-gold)" strokeWidth="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, margin: 0, fontFamily: 'var(--admin-font-serif)' }}>
+                Admin Security & Credentials
+              </h3>
+            </div>
+            <p style={{ fontSize: '0.84rem', color: 'var(--admin-text-muted)', marginBottom: '16px' }}>
+              Update the email address and password required to access the Studio Admin Panel.
+            </p>
+
+            {securityStatus && (
+              <div
+                style={{
+                  padding: '10px 14px',
+                  borderRadius: '8px',
+                  marginBottom: '16px',
+                  fontSize: '0.84rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: securityStatus.type === 'success' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(233, 30, 77, 0.15)',
+                  color: securityStatus.type === 'success' ? '#10B981' : '#FF4B72',
+                  border: `1px solid ${securityStatus.type === 'success' ? 'rgba(16, 185, 129, 0.3)' : 'rgba(233, 30, 77, 0.3)'}`,
+                }}
+              >
+                <span>{securityStatus.message}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleUpdateSecurity}>
+              <div className="row g-3">
+                <div className="col-12 col-md-4">
+                  <label className="admin-form-label">Current Password (Required)</label>
+                  <input
+                    type="password"
+                    className="admin-form-input"
+                    placeholder="Enter current password"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="col-12 col-md-4">
+                  <label className="admin-form-label">Admin Email</label>
+                  <input
+                    type="email"
+                    className="admin-form-input"
+                    value={newEmail}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="col-12 col-md-4">
+                  <label className="admin-form-label">New Password</label>
+                  <input
+                    type="password"
+                    className="admin-form-input"
+                    placeholder="At least 4 characters"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="col-12 col-md-4">
+                  <label className="admin-form-label">Confirm New Password</label>
+                  <input
+                    type="password"
+                    className="admin-form-input"
+                    placeholder="Repeat new password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="col-12 d-flex align-items-center justify-content-between pt-2">
+                  <span style={{ fontSize: '0.78rem', color: 'var(--admin-text-dim)' }}>
+                    Current active login: <strong>{adminCredentials?.email}</strong>
+                  </span>
+                  <button type="submit" className="btn-gold-primary">
+                    <span>Save New Credentials</span>
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
 

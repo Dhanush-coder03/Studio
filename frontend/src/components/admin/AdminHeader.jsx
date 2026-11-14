@@ -2,7 +2,7 @@ import React from 'react';
 import { useStudio } from '../../context/StudioContext';
 
 export default function AdminHeader({ activeTab, onQuickAdd, setSidebarOpen }) {
-  const { navigateTo, backendStatus } = useStudio();
+  const { navigateTo, backendStatus, logoutAdmin, adminUser } = useStudio();
 
   const tabTitles = {
     overview: { title: 'Dashboard Overview', sub: 'Velu Photography Studio analytics & quick controls' },
@@ -94,6 +94,21 @@ export default function AdminHeader({ activeTab, onQuickAdd, setSidebarOpen }) {
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
           <span>Live Site</span>
+        </button>
+
+        {/* Log Out Button */}
+        <button
+          type="button"
+          className="btn-header-logout"
+          onClick={logoutAdmin}
+          title={`Signed in as ${adminUser?.email || 'Admin'}. Click to sign out.`}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span className="d-none d-md-inline">Log Out</span>
         </button>
       </div>
     </header>

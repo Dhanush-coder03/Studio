@@ -53,8 +53,10 @@ export default function ReelModal({ isOpen, onClose }) {
         <div className="reel-player-frame">
           <img 
             src={heroCoupleImg} 
-            alt="Wedding Reel Thumbnail" 
-            className="reel-video-preview-image animate-couple-zoom" 
+            alt="Velu Photographs - 4K Luxury Wedding & Candid Cinematography Reel" 
+            className="reel-video-preview-image animate-couple-zoom"
+            loading="lazy"
+            decoding="async" 
           />
           <div className="reel-video-overlay-gradient"></div>
 
@@ -81,21 +83,21 @@ export default function ReelModal({ isOpen, onClose }) {
         {/* Reel Highlights Carousel / Thumbnails */}
         <div className="reel-moments-row mt-4">
           <div className="reel-moment-card active">
-            <img src={heroCoupleImg} alt="Couple Vows" />
+            <img src={heroCoupleImg} alt="Velu Photographs - Grand Reception Couple Vows" loading="lazy" decoding="async" />
             <div className="reel-moment-info">
               <h6>Grand Reception</h6>
               <small>00:45</small>
             </div>
           </div>
           <div className="reel-moment-card">
-            <img src={sliceTraditionalImg} alt="Traditional Muhurtham" />
+            <img src={sliceTraditionalImg} alt="Velu Photographs - Traditional Tamil Muhurtham Ceremony" loading="lazy" decoding="async" />
             <div className="reel-moment-info">
               <h6>Sacred Muhurtham</h6>
               <small>01:20</small>
             </div>
           </div>
           <div className="reel-moment-card">
-            <img src={sliceReceptionImg} alt="Sunset Vows" />
+            <img src={sliceReceptionImg} alt="Velu Photographs - Sunset Romance Outdoor Couple Shoot" loading="lazy" decoding="async" />
             <div className="reel-moment-info">
               <h6>Sunset Romance</h6>
               <small>02:10</small>

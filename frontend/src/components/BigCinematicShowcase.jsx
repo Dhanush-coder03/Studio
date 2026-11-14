@@ -66,9 +66,9 @@ export default function BigCinematicShowcase({ onBookClick }) {
             SECTION HEADER
             ================================================================ */}
         <div className="cinematic-section-header">
-          <span className="cinematic-header-eyebrow">Wedding Photography Studio</span>
-          <h2 className="cinematic-header-title">Signature Collections</h2>
-          <p className="cinematic-header-sub">Romantic &amp; Elegant &mdash; Pre Wedding Focus</p>
+          <span className="cinematic-header-eyebrow">Velu Photographs &bull; Pre-Wedding &amp; Candid Studio</span>
+          <h2 className="cinematic-header-title">Velu Photographs Signature Collections</h2>
+          <p className="cinematic-header-sub">Romantic &amp; Elegant &mdash; Pre Wedding &amp; Candid Photography Focus</p>
           <svg className="cinematic-header-flourish" viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="0" y1="6" x2="48" y2="6" stroke="#B9822E" strokeWidth="1" strokeOpacity="0.5" />
             <polygon points="60,2 64,6 60,10 56,6" fill="#B9822E" />
@@ -83,8 +83,10 @@ export default function BigCinematicShowcase({ onBookClick }) {
           {/* Background Mountain Couple with Flowing Red Gown */}
           <img
             src={bigMountainImg}
-            alt="Romantic Couple in Mountain with Flying Red Dress"
+            alt="Velu Photographs - Pre-Wedding Photography Mountain Couple Shoot in Flowing Red Gown"
             className="cinematic-banner-bg"
+            loading="lazy"
+            decoding="async"
           />
 
           {/* Vignette & Contrast Overlay */}
@@ -162,9 +164,10 @@ export default function BigCinematicShowcase({ onBookClick }) {
                 <div className="category-card-img-wrapper">
                   <img
                     src={cat.image}
-                    alt={`${cat.title} - ${cat.subtitle}`}
+                    alt={`Velu Photographs - ${cat.title} ${cat.subtitle} Photography Collection`}
                     className="category-card-img"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
