@@ -51,7 +51,7 @@ export default function Navbar({ onBookClick }) {
             href="#home" 
             className="brand-logo-link" 
             onClick={(e) => handleNavClick(e, { label: 'Home', href: '#home' })}
-            aria-label="Velu Photographs - Wedding and Candid Photography Studio Home"
+            aria-label="Velu Photographs - Best Wedding Photographer in Gobichettipalayam"
           >
             <div className="brand-icon-wrapper">
               <svg 

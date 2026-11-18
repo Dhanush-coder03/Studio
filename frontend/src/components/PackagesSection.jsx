@@ -12,7 +12,7 @@ export default function PackagesSection({ onBookClick }) {
           <span className="section-eyebrow">Velu Photographs &bull; Transparent Investment</span>
           <h2 className="section-main-title">Velu Photographs Wedding Photography Packages</h2>
           <p className="section-subtitle">
-            Invest in timeless memories. All Velu Photographs wedding packages include senior candid photographers, 4K cinematography, drone aerial coverage, and heirloom albums.
+            Invest in timeless memories. All Velu Photographs wedding packages include professional wedding photography in Gobichettipalayam, senior candid photographers, 4K cinematography, drone aerial coverage, and heirloom albums.
           </p>
         </div>
 

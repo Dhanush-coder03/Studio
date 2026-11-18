@@ -2,22 +2,22 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import api from '../services/api';
 
 // Import local photography images
-import bigMountainImg from '../assets/images/big-mountain-hero.jpg';
-import catWeddingImg from '../assets/images/cat-wedding.jpg';
-import catTraditionalImg from '../assets/images/cat-traditional.jpg';
-import catMaternityImg from '../assets/images/cat-maternity.jpg';
-import catKidsImg from '../assets/images/cat-kids.jpg';
-import sliceReceptionImg from '../assets/images/slice-reception.jpg';
-import sliceOutdoorImg from '../assets/images/slice-outdoor.jpg';
-import sliceSisterhoodImg from '../assets/images/slice-sisterhood.jpg';
-import sliceTraditionalImg from '../assets/images/slice-traditional.jpg';
-import heroCoupleImg from '../assets/images/hero-couple.jpg';
-import templeBgImg from '../assets/images/temple-bg.jpg';
-import dslrBgImg from '../assets/images/dslr-bg.jpg';
-import sonyAlpha7Img from '../assets/sony_alpha_7.jpg';
-import sonyFx3Img from '../assets/sony_fx3.jpg';
+import bigMountainImg from '../assets/images/pre-wedding-photoshoot-by-velu-photographs.webp';
+import catWeddingImg from '../assets/images/velu-photographs-wedding-photography-gobichettipalayam.webp';
+import catTraditionalImg from '../assets/images/traditional-temple-wedding-photography-tamil-nadu.webp';
+import catMaternityImg from '../assets/images/maternity-photoshoot-in-gobichettipalayam.webp';
+import catKidsImg from '../assets/images/candid-kids-and-family-portrait-photography.webp';
+import sliceReceptionImg from '../assets/images/velu-photographs-wedding-reception-photography.webp';
+import sliceOutdoorImg from '../assets/images/outdoor-pre-wedding-photography-gobichettipalayam.webp';
+import sliceSisterhoodImg from '../assets/images/professional-candid-wedding-photography-velu-photographs.webp';
+import sliceTraditionalImg from '../assets/images/traditional-south-indian-wedding-rituals-velu-photographs.webp';
+import heroCoupleImg from '../assets/images/wedding-photography-moments-in-gobichettipalayam.webp';
+import templeBgImg from '../assets/images/south-indian-temple-wedding-architecture-heritage.webp';
+import dslrBgImg from '../assets/images/professional-dslr-camera-lens-velu-photographs.webp';
+import sonyAlpha7Img from '../assets/sony-alpha-7-iv-wedding-photography-camera.webp';
+import sonyFx3Img from '../assets/sony-fx3-cinema-line-wedding-filmmaking-camera.webp';
 
-const LOCAL_STORAGE_KEY = 'velu_studio_admin_data_v2';
+const LOCAL_STORAGE_KEY = 'velu_studio_admin_data_v3';
 
 const defaultImages = [
   {
@@ -137,12 +137,50 @@ const defaultImages = [
 const defaultServices = [
   {
     id: 'srv-1',
-    title: 'Pre-Wedding Cinematic Stories',
-    slug: 'pre-wedding',
+    title: 'Wedding Photography',
+    slug: 'wedding-photography',
+    category: 'Wedding',
+    image: catWeddingImg,
+    priceStarting: '₹1,20,000',
+    description: 'As a premier wedding photographer in Gobichettipalayam, Velu Photographs offers full cinematic and traditional coverage of South Indian wedding rituals, Muhurtham ceremonies, and grand receptions across Tamil Nadu.',
+    detailedInfo: 'From sacred early morning Vedic rites to the glamorous reception, our multi-camera team preserves every tear, laugh, and sacred petal with master lighting and Sony Cinema cameras.',
+    features: [
+      '2 Senior Candid Wedding Photographers',
+      '2 Cinema Line 4K Videographers',
+      'Full 45-60 Min Narrative Wedding Film',
+      'Same-Day Sneak Peek Reel (Within 24 Hours)',
+      'Luxury Handcrafted Leather Photo Album (40 Pgs)',
+    ],
+    isFeatured: true,
+    createdAt: '2026-01-01',
+  },
+  {
+    id: 'srv-2',
+    title: 'Candid Photography',
+    slug: 'candid-photography',
+    category: 'Candid',
+    image: sliceSisterhoodImg,
+    priceStarting: '₹45,000',
+    description: 'Specializing in candid photography in Gobichettipalayam, Velu Photographs captures spontaneous, emotion-filled expressions, joyful glances, and genuine moments naturally without forced poses.',
+    detailedInfo: 'Our unobtrusive visual storytellers document authentic emotions throughout your celebration with prime portrait glass and signature fine-art color grading.',
+    features: [
+      'Artistic Candid Photography by Senior Artists',
+      'Unobtrusive Storytelling & Authentic Moments',
+      'Advanced Prime Lens Low-Light Mastery',
+      'Signature Color Grading & Magazine Edits',
+      'Instant Sneak Peek Photos Within 48 Hours',
+    ],
+    isFeatured: true,
+    createdAt: '2026-01-02',
+  },
+  {
+    id: 'srv-3',
+    title: 'Pre-Wedding Photography',
+    slug: 'pre-wedding-photography',
     category: 'Pre-Wedding',
     image: bigMountainImg,
-    priceStarting: '₹45,000',
-    description: 'Cinematic destination love stories captured in picturesque outdoor landscapes, misty hill stations, and golden sunset beaches.',
+    priceStarting: '₹40,000',
+    description: 'Scenic outdoor destination pre-wedding photography by Velu Photographs, capturing romantic love stories amidst picturesque landscapes, hills, and temples in Gobichettipalayam and Tamil Nadu.',
     detailedInfo: 'We travel with you to dreamy locations, equipped with cinema-grade drones and prime portrait glass to craft a movie-like love story before your big day.',
     features: [
       '2 Creative Directors & Cinematographers',
@@ -152,102 +190,45 @@ const defaultServices = [
       '40 Retouched High-Resolution Portraits',
     ],
     isFeatured: true,
-    createdAt: '2026-01-01',
-  },
-  {
-    id: 'srv-2',
-    title: 'Royal Wedding & Muhurtham',
-    slug: 'wedding',
-    category: 'Wedding',
-    image: catWeddingImg,
-    priceStarting: '₹1,20,000',
-    description: 'Complete, uncompromising coverage of traditional ceremonies, emotional mangalasutra moments, and grand floral receptions.',
-    detailedInfo: 'From sacred early morning Vedic rites to the glamorous reception, our multi-camera team preserves every tear, laugh, and sacred petal.',
-    features: [
-      '2 Senior Candid Photographers',
-      '2 Traditional 4K Cinema Videographers',
-      'Full 45-60 Min Narrative Wedding Film',
-      'Same-Day Sneak Peek Reel (Within 24 Hours)',
-      'Luxury Hand-Bound Leather Photo Album (40 Pgs)',
-    ],
-    isFeatured: true,
-    createdAt: '2026-01-02',
-  },
-  {
-    id: 'srv-3',
-    title: 'Traditional Temple Heritage',
-    slug: 'traditional',
-    category: 'Traditional',
-    image: catTraditionalImg,
-    priceStarting: '₹55,000',
-    description: 'Specialized in South Indian temple ceremonies, Kanjivaram silk heirloom styling, intricate jewelry, and sacred customs.',
-    detailedInfo: 'We respect the sanctity of ritual corridors and heritage halls, capturing divine temple architecture and familial warmth with artistic precision.',
-    features: [
-      'Senior Traditional Photographer & Rig Specialist',
-      'Specialized Low-Light Prime Lens Package',
-      'Intricate Bridal Jewelry & Saree Detail Focus',
-      'High-Resolution Raw Archive on Cloud Drive',
-      '25 Premium Fine-Art Cotton Rag Prints',
-    ],
-    isFeatured: false,
     createdAt: '2026-01-03',
   },
   {
     id: 'srv-4',
-    title: 'Maternity & Motherhood',
-    slug: 'maternity',
-    category: 'Maternity',
-    image: catMaternityImg,
+    title: 'Professional Event Photography',
+    slug: 'professional-event-photography',
+    category: 'Event',
+    image: sliceReceptionImg,
     priceStarting: '₹35,000',
-    description: 'Tender, gentle celebrations of new life set amidst serene natural meadows, warm studio lights, and floral setups.',
-    detailedInfo: 'A comfortable, relaxed session celebrating the glow of motherhood with customized designer gowns, gentle poses, and family inclusion.',
+    description: 'Comprehensive professional photography for engagements, receptions, family celebrations, and corporate events across Gobichettipalayam and Tamil Nadu with crisp details and dynamic coverage.',
+    detailedInfo: 'Whether a grand reception or an intimate family celebration, Velu Photographs delivers sharp, vibrant, and timeless coverage with professional event lighting and rapid turnaround.',
     features: [
-      'Relaxed, Unhurried 2-3 Hour Experience',
-      'Designer Maternity Gowns & Drapes Provided',
-      'Partner & Sibling Inclusion at No Extra Cost',
-      '25 Magazine-Grade Fine Art Retouched Portraits',
-      'Mini Keepsake Wooden Frame Included',
+      'Professional Event Photography & HD Video',
+      'Multi-Angle Ceremony & Guest Coverage',
+      'Pro Lighting Setup for Halls & Venues',
+      'Fast Turnaround with Same-Week Highlights',
+      'Full High-Resolution Edited Digital Archive',
     ],
     isFeatured: false,
     createdAt: '2026-01-04',
   },
   {
     id: 'srv-5',
-    title: 'Kids & Family Candids',
-    slug: 'kids',
-    category: 'Kids & Family',
-    image: catKidsImg,
-    priceStarting: '₹30,000',
-    description: 'Pure, authentic laughter and innocent childhood smiles captured in spontaneous, joyful candid portraits.',
-    detailedInfo: 'No stiff poses or forced smiles. We interact with your little one to document their genuine curiosity, giggles, and milestones.',
+    title: 'Portrait Photography',
+    slug: 'portrait-photography',
+    category: 'Portrait',
+    image: catTraditionalImg,
+    priceStarting: '₹25,000',
+    description: 'Timeless bridal, individual, and family portrait photography by Velu Photographs in Gobichettipalayam, highlighting traditional attire, authentic personalities, and heirloom aesthetics.',
+    detailedInfo: 'Celebrate personal milestones and heritage attire with bespoke portraiture sessions featuring artistic studio lighting and fine-art color grading.',
     features: [
-      'Patient & Kid-Friendly Photography Crew',
-      'Interactive Fun Props & Playful Scenarios',
-      'First Birthday / Cake Smash Setup Options',
-      'Unlimited Digital Captures with Top 30 Edits',
-      'Digital Storybook Album Delivery',
+      'Bespoke Studio & On-Location Portrait Sessions',
+      'Fine-Art Lighting & High-Resolution Prime Glass',
+      'Traditional Saree, Temple & Modern Styling',
+      'Detailed Beauty & Skin Retouching',
+      'Premium Archival Fine-Art Canvas Prints',
     ],
     isFeatured: false,
     createdAt: '2026-01-05',
-  },
-  {
-    id: 'srv-6',
-    title: 'Luxury Destination Wedding Supreme',
-    slug: 'destination',
-    category: 'Destination',
-    image: sliceOutdoorImg,
-    priceStarting: '₹2,50,000',
-    description: 'Multi-day luxury celebration coverage across royal heritage palaces, backwater resorts, and tropical island beaches.',
-    detailedInfo: 'An elite photography crew dedicated solely to your destination wedding, including Sangeet, Mehendi, Pool Party, Muhurtham, and Gala Afterparty.',
-    features: [
-      'Full 3-Day Multi-Event Unrestricted Coverage',
-      '4 Cinema Cameras (Sony FX3) & FPV Drone Pilot',
-      'Live Same-Evening Teaser Edit for Guests',
-      '2 Premium Italian Silk Photo Albums',
-      'Complimentary Sunset Pre-Wedding Session',
-    ],
-    isFeatured: true,
-    createdAt: '2026-01-06',
   },
 ];
 
@@ -414,18 +395,18 @@ const defaultPackages = [
 
 const defaultContactInfo = {
   studioName: 'Velu Photographs',
-  tagline: 'Luxury Wedding Photography & Candid Studio',
+  tagline: 'Best Wedding Photographer in Gobichettipalayam',
   ownerName: 'Velu',
   phone: '+91 96007 77591',
   altPhone: '+91 96007 77591',
   email: 'contact@veluphotography.com',
-  address: 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 638457',
+  address: 'Gobichettipalayam, Tamil Nadu, India',
   workingHours: 'Mon - Sun: 9:00 AM - 9:00 PM',
   whatsapp: '919600777591',
   instagram: 'https://instagram.com/veluphotography',
   facebook: 'https://facebook.com/veluphotography',
   youtube: 'https://youtube.com/@veluphotography',
-  mapEmbedUrl: 'https://maps.google.com/?q=Kurumathur+Gobichettipalayam+Erode+Tamil+Nadu+638457',
+  mapEmbedUrl: 'https://maps.google.com/?q=Gobichettipalayam+Tamil+Nadu+India',
 };
 
 const defaultInquiries = [
@@ -529,7 +510,7 @@ export function StudioProvider({ children }) {
       if (saved) {
         const parsed = JSON.parse(saved);
         // If still contains legacy placeholder address or previous 9-digit phone, upgrade
-        if ((parsed.address && parsed.address.includes('Anna Salai')) || parsed.phone === '960077591' || parsed.whatsapp === '91960077591') {
+        if ((parsed.address && (parsed.address.includes('Anna Salai') || parsed.address.includes('Kurumathur'))) || parsed.phone === '960077591' || parsed.whatsapp === '91960077591') {
           const updated = { ...parsed, ...defaultContactInfo };
           localStorage.setItem(`${LOCAL_STORAGE_KEY}_contactInfo`, JSON.stringify(updated));
           return updated;

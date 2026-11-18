@@ -1,5 +1,5 @@
 import React from 'react';
-import dslrBg from '../assets/images/dslr-bg.jpg';
+import dslrBg from '../assets/images/professional-dslr-camera-lens-velu-photographs.webp';
 
 export default function BackgroundCamera({ mouseOffset }) {
   // Very subtle mouse parallax for background depth
@@ -20,6 +20,8 @@ export default function BackgroundCamera({ mouseOffset }) {
           alt=""
           className="hero-dslr-image"
           loading="eager"
+          width="1376"
+          height="768"
         />
       </div>
 

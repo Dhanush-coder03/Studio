@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import bigMountainImg from '../assets/images/big-mountain-hero.jpg';
-import preWeddingImg from '../assets/images/cat-wedding.jpg';
-import weddingImg from '../assets/images/slice-reception.jpg';
-import traditionalImg from '../assets/images/cat-traditional.jpg';
-import maternityImg from '../assets/images/cat-maternity.jpg';
-import kidsImg from '../assets/images/cat-kids.jpg';
+import bigMountainImg from '../assets/images/pre-wedding-photoshoot-by-velu-photographs.webp';
+import preWeddingImg from '../assets/images/velu-photographs-wedding-photography-gobichettipalayam.webp';
+import weddingImg from '../assets/images/velu-photographs-wedding-reception-photography.webp';
+import traditionalImg from '../assets/images/traditional-temple-wedding-photography-tamil-nadu.webp';
+import maternityImg from '../assets/images/maternity-photoshoot-in-gobichettipalayam.webp';
+import kidsImg from '../assets/images/candid-kids-and-family-portrait-photography.webp';
 
 const categories = [
   {
@@ -12,6 +12,7 @@ const categories = [
     title: 'Pre Wedding',
     subtitle: 'ROMANTIC STORIES',
     image: preWeddingImg,
+    alt: 'Pre-wedding photoshoot by Velu Photographs in Gobichettipalayam',
     description: 'Cinematic destination love stories captured in picturesque outdoor landscapes and golden hour radiance.',
   },
   {
@@ -19,6 +20,7 @@ const categories = [
     title: 'Wedding',
     subtitle: 'BEAUTIFUL BEGINNINGS',
     image: weddingImg,
+    alt: 'Velu Photographs wedding photography in Gobichettipalayam - Reception celebration',
     description: 'Opulent wedding celebrations, grand reception stages, and unforgettable vows etched in timeless elegance.',
   },
   {
@@ -26,6 +28,7 @@ const categories = [
     title: 'Traditional',
     subtitle: 'OUR CULTURE',
     image: traditionalImg,
+    alt: 'Traditional South Indian temple wedding photography in Tamil Nadu by Velu Photographs',
     description: 'Sacred Tamil Muhurtham rituals, temple heritage ceremonies, and vibrant silk saree heirlooms.',
   },
   {
@@ -33,6 +36,7 @@ const categories = [
     title: 'Maternity',
     subtitle: 'A NEW CHAPTER',
     image: maternityImg,
+    alt: 'Maternity photoshoot in Gobichettipalayam by Velu Photographs',
     description: 'Gentle, tender celebrations of new life set amidst serene natural meadows and mountain breeze.',
   },
   {
@@ -40,6 +44,7 @@ const categories = [
     title: 'Kids Photos',
     subtitle: 'LITTLE MOMENTS',
     image: kidsImg,
+    alt: 'Professional candid photography of kids and family moments by Velu Photographs',
     description: 'Pure, authentic laughter and innocent childhood smiles captured in spontaneous candid portraits.',
   },
 ];
@@ -83,10 +88,12 @@ export default function BigCinematicShowcase({ onBookClick }) {
           {/* Background Mountain Couple with Flowing Red Gown */}
           <img
             src={bigMountainImg}
-            alt="Velu Photographs - Pre-Wedding Photography Mountain Couple Shoot in Flowing Red Gown"
+            alt="Pre-wedding photoshoot by Velu Photographs on scenic mountain cliff in Tamil Nadu"
             className="cinematic-banner-bg"
             loading="lazy"
             decoding="async"
+            width="1376"
+            height="768"
           />
 
           {/* Vignette & Contrast Overlay */}
@@ -164,10 +171,12 @@ export default function BigCinematicShowcase({ onBookClick }) {
                 <div className="category-card-img-wrapper">
                   <img
                     src={cat.image}
-                    alt={`Velu Photographs - ${cat.title} ${cat.subtitle} Photography Collection`}
+                    alt={cat.alt || `Velu Photographs ${cat.title} in Gobichettipalayam`}
                     className="category-card-img"
                     loading="lazy"
                     decoding="async"
+                    width="340"
+                    height="240"
                   />
                 </div>
 

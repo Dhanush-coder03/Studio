@@ -170,9 +170,9 @@
 /* Main Headline */
 .hero-headline {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 5.2vw, 4.4rem);
+  font-size: clamp(2.3rem, 4vw, 3.7rem);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-charcoal);
   margin-bottom: 22px;

@@ -5,15 +5,17 @@ export default function ServicesSection({ onBookClick }) {
   const { services, contactInfo, addInquiry, showToast } = useStudio();
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Pre-Wedding', 'Wedding', 'Traditional', 'Maternity', 'Kids & Family', 'Destination'];
+  const categories = ['All', 'Wedding', 'Candid', 'Pre-Wedding', 'Event', 'Portrait'];
 
   const filteredServices = services.filter((srv) => {
     if (selectedCategory === 'All') return true;
-    return srv.category.toLowerCase().includes(selectedCategory.toLowerCase());
+    const cat = srv.category ? srv.category.toLowerCase() : '';
+    const title = srv.title ? srv.title.toLowerCase() : '';
+    const target = selectedCategory.toLowerCase();
+    return cat.includes(target) || title.includes(target);
   });
 
   const handleBookService = (srv) => {
-    // Determine WhatsApp number from contactInfo or default to 919600777591
     const rawPhone = (contactInfo?.whatsapp || contactInfo?.phone || '9600777591').toString().replace(/\D/g, '');
     const targetPhone = rawPhone.startsWith('91') ? rawPhone : `91${rawPhone}`;
 
@@ -36,14 +38,13 @@ export default function ServicesSection({ onBookClick }) {
 📋 *Included Deliverables:*
 ${featuresList}
 
-📍 *Studio Address:*
-${contactInfo?.address || 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 638457'}
+📍 *Studio Location:*
+${contactInfo?.address || 'Gobichettipalayam, Tamil Nadu, India'}
 📞 *Direct Phone / WhatsApp:* ${contactInfo?.phone || '+91 96007 77591'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 *Hello Velu Photography! I would like to book this service. Please check date availability and send quotation.*`;
 
-    // Use api.whatsapp.com/send directly to preserve UTF-8 formatting and avoid redirect emoji corruption
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(orderText)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
@@ -56,26 +57,26 @@ ${contactInfo?.address || 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 6384
         weddingDate: '',
         eventType: srv.category || 'Wedding',
         packageInterested: srv.title,
-        location: 'Kurumathur, Gobichettipalayam, Erode',
+        location: 'Gobichettipalayam, Tamil Nadu, India',
         message: `Client initiated WhatsApp booking for "${srv.title}" (${srv.priceStarting})`,
         status: 'New',
       });
     }
 
     if (showToast) {
-      showToast(`Opening WhatsApp campaign order for "${srv.title}"...`, 'success');
+      showToast(`Opening WhatsApp booking for "${srv.title}"...`, 'success');
     }
   };
 
   return (
     <section id="services" className="studio-services-section">
       <div className="container">
-        {/* Header */}
+        {/* Header - H2 & Local SEO Descriptions */}
         <div className="section-header-centered">
           <span className="section-eyebrow">Velu Photographs &bull; Master Offerings</span>
-          <h2 className="section-main-title">Professional Wedding &amp; Candid Photography Services</h2>
+          <h2 className="section-main-title">Our Photography Services</h2>
           <p className="section-subtitle">
-            At Velu Photographs, from intimate traditional South Indian rituals to grand luxury destination weddings, each service is curated with master lighting, Sony Cinema cameras, and authentic candid emotion.
+            Velu Photographs offers professional photography in Gobichettipalayam, Tamil Nadu. Specializing in wedding photography, candid photography, pre-wedding shoots, portrait photography, and event coverage, we capture your precious moments with cinematic brilliance.
           </p>
         </div>
 
@@ -93,17 +94,19 @@ ${contactInfo?.address || 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 6384
           ))}
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid with H3 headings */}
         <div className="studio-services-grid">
           {filteredServices.map((srv) => (
             <div className="studio-service-card-client" key={srv.id}>
               <div className="service-card-image-wrap">
                 <img
                   src={srv.image}
-                  alt={`${srv.title} - Velu Photographs Professional Wedding & Candid Photography`}
+                  alt={`${srv.title} by Velu Photographs in Gobichettipalayam, Tamil Nadu`}
                   className="service-card-image"
                   loading="lazy"
                   decoding="async"
+                  width="400"
+                  height="260"
                 />
                 <span className="service-card-price-badge">Starts at {srv.priceStarting}</span>
                 <span className="service-card-category-tag">{srv.category}</span>

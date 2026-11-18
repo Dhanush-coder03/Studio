@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/camera-details.css';
-import sonyAlpha7Img from '../assets/sony_alpha_7.jpg';
-import sonyFx3Img from '../assets/sony_fx3.jpg';
+import sonyAlpha7Img from '../assets/sony-alpha-7-iv-wedding-photography-camera.webp';
+import sonyFx3Img from '../assets/sony-fx3-cinema-line-wedding-filmmaking-camera.webp';
 
 export default function CameraDetails() {
   return (
@@ -10,7 +10,7 @@ export default function CameraDetails() {
         <div className="camera-details-header">
           <span className="camera-eyebrow">Velu Photographs &bull; Cinema Equipment</span>
           <h2 className="camera-title">Professional Photography &amp; 4K Cinema Gear</h2>
-          <p className="camera-subtitle">At Velu Photographs, we capture your memories using industry-leading cameras to deliver stunning cinematic wedding and candid photography.</p>
+          <p className="camera-subtitle">At Velu Photographs, we capture your memories using industry-leading cameras to deliver stunning cinematic wedding and candid photography in Gobichettipalayam.</p>
         </div>
         
         <div className="camera-grid">
@@ -19,10 +19,12 @@ export default function CameraDetails() {
             <div className="camera-image-container">
               <img
                 src={sonyAlpha7Img}
-                alt="Sony Alpha 7 IV Full Frame Camera used for Candid Wedding Photography by Velu Photographs"
+                alt="Sony Alpha 7 IV full frame camera used for candid wedding photography by Velu Photographs in Gobichettipalayam"
                 className="camera-image"
                 loading="lazy"
                 decoding="async"
+                width="500"
+                height="500"
               />
             </div>
             <div className="camera-info">
@@ -41,10 +43,12 @@ export default function CameraDetails() {
             <div className="camera-image-container">
               <img
                 src={sonyFx3Img}
-                alt="Sony FX3 Cinema Line Camera for 4K Wedding Films at Velu Photographs"
+                alt="Sony FX3 cinema line camera used for professional wedding films and cinematography by Velu Photographs"
                 className="camera-image"
                 loading="lazy"
                 decoding="async"
+                width="500"
+                height="500"
               />
             </div>
             <div className="camera-info">

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import heroCoupleImg from '../assets/images/hero-couple.jpg';
-import sliceOutdoorImg from '../assets/images/slice-outdoor.jpg';
-import sliceTraditionalImg from '../assets/images/slice-traditional.jpg';
-import sliceReceptionImg from '../assets/images/slice-reception.jpg';
-import sliceSisterhoodImg from '../assets/images/slice-sisterhood.jpg';
+import heroCoupleImg from '../assets/images/wedding-photography-moments-in-gobichettipalayam.webp';
+import sliceOutdoorImg from '../assets/images/outdoor-pre-wedding-photography-gobichettipalayam.webp';
+import sliceTraditionalImg from '../assets/images/traditional-south-indian-wedding-rituals-velu-photographs.webp';
+import sliceReceptionImg from '../assets/images/velu-photographs-wedding-reception-photography.webp';
+import sliceSisterhoodImg from '../assets/images/professional-candid-wedding-photography-velu-photographs.webp';
 
 /**
  * Computes SVG path for an annular sector (radial pie wedge)

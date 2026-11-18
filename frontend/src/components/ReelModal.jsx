@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import heroCoupleImg from '../assets/images/hero-couple.jpg';
-import sliceTraditionalImg from '../assets/images/slice-traditional.jpg';
-import sliceReceptionImg from '../assets/images/slice-reception.jpg';
+import heroCoupleImg from '../assets/images/wedding-photography-moments-in-gobichettipalayam.webp';
+import sliceTraditionalImg from '../assets/images/traditional-south-indian-wedding-rituals-velu-photographs.webp';
+import sliceReceptionImg from '../assets/images/velu-photographs-wedding-reception-photography.webp';
 
 export default function ReelModal({ isOpen, onClose }) {
   useEffect(() => {
@@ -83,21 +83,21 @@ export default function ReelModal({ isOpen, onClose }) {
         {/* Reel Highlights Carousel / Thumbnails */}
         <div className="reel-moments-row mt-4">
           <div className="reel-moment-card active">
-            <img src={heroCoupleImg} alt="Velu Photographs - Grand Reception Couple Vows" loading="lazy" decoding="async" />
+            <img src={heroCoupleImg} alt="Velu Photographs wedding photography moments in Gobichettipalayam" loading="lazy" decoding="async" />
             <div className="reel-moment-info">
               <h6>Grand Reception</h6>
               <small>00:45</small>
             </div>
           </div>
           <div className="reel-moment-card">
-            <img src={sliceTraditionalImg} alt="Velu Photographs - Traditional Tamil Muhurtham Ceremony" loading="lazy" decoding="async" />
+            <img src={sliceTraditionalImg} alt="Traditional South Indian wedding rituals by Velu Photographs" loading="lazy" decoding="async" />
             <div className="reel-moment-info">
               <h6>Sacred Muhurtham</h6>
               <small>01:20</small>
             </div>
           </div>
           <div className="reel-moment-card">
-            <img src={sliceReceptionImg} alt="Velu Photographs - Sunset Romance Outdoor Couple Shoot" loading="lazy" decoding="async" />
+            <img src={sliceReceptionImg} alt="Wedding reception photography in Gobichettipalayam by Velu Photographs" loading="lazy" decoding="async" />
             <div className="reel-moment-info">
               <h6>Sunset Romance</h6>
               <small>02:10</small>

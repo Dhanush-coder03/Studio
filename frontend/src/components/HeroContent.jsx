@@ -12,21 +12,20 @@ export default function HeroContent({ onBookClick, onReelClick }) {
       {/* Main Headline: Editorial Luxury Serif */}
       <h1 className="hero-headline">
         <span className="headline-row animate-title-line-1">
-          Let’s Capture
+          Velu Photographs
         </span>
         <span className="headline-row animate-title-line-2">
-          Your <span className="headline-gold-word">Special Day</span>
+          &ndash; Professional Photography in <span className="headline-gold-word">Gobichettipalayam</span>
         </span>
-        <span className="visually-hidden"> - Velu Photographs Professional Wedding &amp; Candid Photography</span>
       </h1>
 
       {/* Subtitle: Clean Dual-Line Sans-Serif */}
       <div className="hero-subtitle-container animate-subtitle">
         <p className="hero-subtitle-text">
-          Wedding Photography &nbsp;|&nbsp; Pre-Wedding Photography &nbsp;|&nbsp; Professional Photography
+          Wedding Photography &nbsp;|&nbsp; Candid Photography &nbsp;|&nbsp; Pre-Wedding Shoots
         </p>
         <p className="hero-subtitle-text">
-          Traditional Functions &nbsp;|&nbsp; Velu Candid Photography &nbsp;|&nbsp; Gobichettipalayam, Erode
+          Portraits &amp; Event Photography &nbsp;|&nbsp; Best Wedding Photographer in Gobichettipalayam, Tamil Nadu
         </p>
       </div>
 

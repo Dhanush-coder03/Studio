@@ -1,11 +1,20 @@
 import React from 'react';
 import { useStudio } from '../context/StudioContext';
-import img1 from '../assets/images/slice-reception.jpg';
-import img2 from '../assets/images/cat-maternity.jpg';
-import img3 from '../assets/images/cat-traditional.jpg';
-import img4 from '../assets/images/cat-kids.jpg';
-import img5 from '../assets/images/slice-outdoor.jpg';
-import img6 from '../assets/images/slice-sisterhood.jpg';
+import img1 from '../assets/images/velu-photographs-wedding-reception-photography.webp';
+import img2 from '../assets/images/maternity-photoshoot-in-gobichettipalayam.webp';
+import img3 from '../assets/images/traditional-temple-wedding-photography-tamil-nadu.webp';
+import img4 from '../assets/images/candid-kids-and-family-portrait-photography.webp';
+import img5 from '../assets/images/outdoor-pre-wedding-photography-gobichettipalayam.webp';
+import img6 from '../assets/images/professional-candid-wedding-photography-velu-photographs.webp';
+
+const slideDescriptions = [
+  "Velu Photographs wedding reception photography and celebratory couple moments in Gobichettipalayam",
+  "Maternity photoshoot in Gobichettipalayam by Velu Photographs",
+  "Traditional South Indian temple wedding photography in Tamil Nadu by Velu Photographs",
+  "Candid kids and family photography by Velu Photographs in Gobichettipalayam",
+  "Outdoor pre-wedding photoshoot by Velu Photographs in Tamil Nadu",
+  "Professional candid wedding photography of bride and bridesmaids by Velu Photographs",
+];
 
 export default function GalleryReel() {
   const { gallery } = useStudio();
@@ -29,9 +38,11 @@ export default function GalleryReel() {
               <div className="film-frame" key={`frame-${idx}`}>
                 <img
                   src={src}
-                  alt={`Velu Photographs Wedding and Candid Photography Frame ${idx + 1}`}
+                  alt={slideDescriptions[idx % slideDescriptions.length]}
                   loading="lazy"
                   decoding="async"
+                  width="380"
+                  height="250"
                 />
               </div>
             ))}

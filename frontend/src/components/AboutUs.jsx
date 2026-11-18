@@ -1,5 +1,5 @@
 import React from 'react';
-import outdoorImg from '../assets/images/slice-outdoor.jpg';
+import outdoorImg from '../assets/images/outdoor-pre-wedding-photography-gobichettipalayam.webp';
 
 export default function AboutUs() {
   return (
@@ -8,19 +8,21 @@ export default function AboutUs() {
         <div className="about-image-wrapper" data-aos="fade-right">
           <img
             src={outdoorImg}
-            alt="Velu Photographs - Professional Wedding & Candid Photography Team in Gobichettipalayam Erode"
+            alt="Velu Photographs professional wedding photography team on outdoor photoshoot in Gobichettipalayam"
             className="about-image"
             loading="lazy"
             decoding="async"
+            width="600"
+            height="400"
           />
         </div>
         
         <div className="about-content" data-aos="fade-left">
           <span className="about-eyebrow">The Studio Behind The Lens</span>
-          <h2 className="about-title">Velu Photographs &mdash; Crafting Timeless Memories Since 2010</h2>
+          <h2 className="about-title">Velu Photographs &mdash; Crafting Timeless Memories in Gobichettipalayam</h2>
           
           <p className="about-description">
-            At <strong>Velu Photographs</strong>, we are a passionate crew of visual storytellers, cinematographers, and candid photographers based in Kurumathur, Gobichettipalayam (Erode). With a seamless blend of cinematic elegance and candid authenticity, we capture professional wedding photography, pre-wedding romance, traditional South Indian ceremonies, and family milestones across Tamil Nadu.
+            At <strong>Velu Photographs</strong>, we are a passionate crew of visual storytellers, candid wedding photographers, and cinematographers based in Gobichettipalayam, Tamil Nadu. With a seamless blend of cinematic elegance and candid authenticity, we specialize in wedding photography, candid photography, pre-wedding shoots, portraits, and professional event photography across Gobichettipalayam and Tamil Nadu.
           </p>
 
           <div className="about-stats">
@@ -42,7 +44,7 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <button className="btn-about" onClick={() => window.scrollTo(0, 0)}>
+          <button className="btn-about" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <span>Meet The Team</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />

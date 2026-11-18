@@ -3,14 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://studio-eosin-phi.vercel.app/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://studio-eosin-phi.vercel.app/og-image.jpg</image:loc>
-      <image:title>Velu Photographs - Wedding and Candid Photography Studio</image:title>
-      <image:caption>Velu Photographs captures beautiful moments with professional wedding photography, candid photography, and pre-wedding shoots in Gobichettipalayam, Erode, Tamil Nadu.</image:caption>
+      <image:title>Velu Photographs | Best Wedding Photographer in Gobichettipalayam</image:title>
+      <image:caption>Velu Photographs offers professional wedding photography, candid photography, pre-wedding shoots, portraits and event photography in Gobichettipalayam, Tamil Nadu.</image:caption>
     </image:image>
   </url>
 </urlset>
-
