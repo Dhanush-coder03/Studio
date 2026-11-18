@@ -7,6 +7,7 @@ import PackagesSection from '../components/PackagesSection';
 import AboutUs from '../components/AboutUs';
 import GalleryReel from '../components/GalleryReel';
 import CameraDetails from '../components/CameraDetails';
+import LocationSection from '../components/LocationSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import ReelModal from '../components/ReelModal';
@@ -55,6 +56,9 @@ export default function Home() {
         {/* Camera Details Section */}
         <CameraDetails />
 
+        {/* Local SEO & Gobichettipalayam Location Details */}
+        <LocationSection onBookClick={() => handleOpenBook()} />
+
         {/* Studio Contact Information & Consultation Form */}
         <ContactSection />
       </main>
@@ -80,4 +84,3 @@ export default function Home() {
     </div>
   );
 }
-

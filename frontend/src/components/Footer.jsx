@@ -41,6 +41,7 @@ export default function Footer() {
               <li><a href="#gallery">Portfolio</a></li>
               <li><a href="#packages">Pricing Packages</a></li>
               <li><a href="#about">About Studio</a></li>
+              <li><a href="#location">Gobichettipalayam Location</a></li>
               <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>

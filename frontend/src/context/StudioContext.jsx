@@ -17,7 +17,7 @@ import dslrBgImg from '../assets/images/professional-dslr-camera-lens-velu-photo
 import sonyAlpha7Img from '../assets/sony-alpha-7-iv-wedding-photography-camera.webp';
 import sonyFx3Img from '../assets/sony-fx3-cinema-line-wedding-filmmaking-camera.webp';
 
-const LOCAL_STORAGE_KEY = 'velu_studio_admin_data_v3';
+const LOCAL_STORAGE_KEY = 'velu_studio_admin_data_v4';
 
 const defaultImages = [
   {
@@ -142,7 +142,7 @@ const defaultServices = [
     category: 'Wedding',
     image: catWeddingImg,
     priceStarting: '₹1,20,000',
-    description: 'As a premier wedding photographer in Gobichettipalayam, Velu Photographs offers full cinematic and traditional coverage of South Indian wedding rituals, Muhurtham ceremonies, and grand receptions across Tamil Nadu.',
+    description: 'Recognized for the best wedding photography in Gobichettipalayam, Velu Photographs provides full coverage of traditional South Indian marriage rituals, Muhurtham ceremonies, and wedding receptions across Kurumathur, Erode, and Tamil Nadu.',
     detailedInfo: 'From sacred early morning Vedic rites to the glamorous reception, our multi-camera team preserves every tear, laugh, and sacred petal with master lighting and Sony Cinema cameras.',
     features: [
       '2 Senior Candid Wedding Photographers',
@@ -161,7 +161,7 @@ const defaultServices = [
     category: 'Candid',
     image: sliceSisterhoodImg,
     priceStarting: '₹45,000',
-    description: 'Specializing in candid photography in Gobichettipalayam, Velu Photographs captures spontaneous, emotion-filled expressions, joyful glances, and genuine moments naturally without forced poses.',
+    description: 'Specializing in candid photography in Gobichettipalayam, Velu Photographs captures spontaneous expressions, heartfelt marriage emotions, and authentic candid moments without stiff posing.',
     detailedInfo: 'Our unobtrusive visual storytellers document authentic emotions throughout your celebration with prime portrait glass and signature fine-art color grading.',
     features: [
       'Artistic Candid Photography by Senior Artists',
@@ -180,7 +180,7 @@ const defaultServices = [
     category: 'Pre-Wedding',
     image: bigMountainImg,
     priceStarting: '₹40,000',
-    description: 'Scenic outdoor destination pre-wedding photography by Velu Photographs, capturing romantic love stories amidst picturesque landscapes, hills, and temples in Gobichettipalayam and Tamil Nadu.',
+    description: 'Capture romantic couple stories with pre-wedding photography in Gobichettipalayam by Velu Photographs, featuring scenic outdoor spots like Kodiveri Dam, Bhavani riverbanks, and scenic Kongu landscapes.',
     detailedInfo: 'We travel with you to dreamy locations, equipped with cinema-grade drones and prime portrait glass to craft a movie-like love story before your big day.',
     features: [
       '2 Creative Directors & Cinematographers',
@@ -395,18 +395,18 @@ const defaultPackages = [
 
 const defaultContactInfo = {
   studioName: 'Velu Photographs',
-  tagline: 'Best Wedding Photographer in Gobichettipalayam',
+  tagline: 'Best Wedding Photography in Gobichettipalayam',
   ownerName: 'Velu',
   phone: '+91 96007 77591',
   altPhone: '+91 96007 77591',
   email: 'contact@veluphotography.com',
-  address: 'Gobichettipalayam, Tamil Nadu, India',
+  address: 'Kurumathur, Gobichettipalayam, Erode, Tamil Nadu 638457, India',
   workingHours: 'Mon - Sun: 9:00 AM - 9:00 PM',
   whatsapp: '919600777591',
   instagram: 'https://instagram.com/veluphotography',
   facebook: 'https://facebook.com/veluphotography',
   youtube: 'https://youtube.com/@veluphotography',
-  mapEmbedUrl: 'https://maps.google.com/?q=Gobichettipalayam+Tamil+Nadu+India',
+  mapEmbedUrl: 'https://maps.google.com/?q=Kurumathur+Gobichettipalayam+Erode+Tamil+Nadu+638457',
 };
 
 const defaultInquiries = [

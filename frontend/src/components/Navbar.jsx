@@ -26,6 +26,7 @@ export default function Navbar({ onBookClick }) {
     { label: 'Gallery', href: '#gallery' },
     { label: 'Packages', href: '#packages' },
     { label: 'About', href: '#about' },
+    { label: 'Location', href: '#location' },
     { label: 'Contact', href: '#contact' },
   ];
 

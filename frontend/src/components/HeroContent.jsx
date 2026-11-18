@@ -22,10 +22,10 @@ export default function HeroContent({ onBookClick, onReelClick }) {
       {/* Subtitle: Clean Dual-Line Sans-Serif */}
       <div className="hero-subtitle-container animate-subtitle">
         <p className="hero-subtitle-text">
-          Wedding Photography &nbsp;|&nbsp; Candid Photography &nbsp;|&nbsp; Pre-Wedding Shoots
+          Photography in Gobichettipalayam for Marriage &nbsp;|&nbsp; Candid Photography &nbsp;|&nbsp; Pre-Wedding Shoots
         </p>
         <p className="hero-subtitle-text">
-          Portraits &amp; Event Photography &nbsp;|&nbsp; Best Wedding Photographer in Gobichettipalayam, Tamil Nadu
+          Best Wedding Photographers based in Kurumathur, Gobichettipalayam, Erode, Tamil Nadu
         </p>
       </div>
 

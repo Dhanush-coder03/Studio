@@ -32,7 +32,7 @@ export default function ContactSection() {
           <span className="section-eyebrow">Velu Photographs &bull; Let's Connect</span>
           <h2 className="section-main-title">Contact Velu Photographs</h2>
           <p className="section-subtitle">
-            Visit our photography studio in Gobichettipalayam, Tamil Nadu or send an inquiry. We would love to discuss your wedding photography dreams, candid shoots, and custom packages.
+            Visit our photography studio in Kurumathur, Gobichettipalayam (Erode, Tamil Nadu) or send an inquiry. We would love to discuss your marriage photography, candid wedding coverage, and custom packages.
           </p>
         </div>
 

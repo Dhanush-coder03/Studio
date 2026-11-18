@@ -22,7 +22,7 @@ export default function AboutUs() {
           <h2 className="about-title">Velu Photographs &mdash; Crafting Timeless Memories in Gobichettipalayam</h2>
           
           <p className="about-description">
-            At <strong>Velu Photographs</strong>, we are a passionate crew of visual storytellers, candid wedding photographers, and cinematographers based in Gobichettipalayam, Tamil Nadu. With a seamless blend of cinematic elegance and candid authenticity, we specialize in wedding photography, candid photography, pre-wedding shoots, portraits, and professional event photography across Gobichettipalayam and Tamil Nadu.
+            At <strong>Velu Photographs</strong>, we are a passionate crew of visual storytellers, candid wedding photographers, and cinematographers based in Kurumathur, Gobichettipalayam (Erode, Tamil Nadu). With a seamless blend of cinematic elegance and natural storytelling, we specialize in photography in Gobichettipalayam for marriage ceremonies, candid wedding moments, pre-wedding shoots, portraits, and professional events across the Kongu region.
           </p>
 
           <div className="about-stats">
